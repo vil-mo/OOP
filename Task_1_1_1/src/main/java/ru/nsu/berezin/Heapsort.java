@@ -11,7 +11,7 @@ public class Heapsort {
     /**
      * Heapsort uisng min binary heap.
      * 
-     * @param array array that is being sorted. Mutates the passed array
+     * @param array - Array that is being sorted. Mutates the passed array.
      */
     public static void heapsort(int[] array) {
         class MinBinaryHeap {
@@ -73,7 +73,7 @@ public class Heapsort {
                     return buf[0];
                 }
 
-                int root = buf[0];
+                final int root = buf[0];
 
                 buf[0] = buf[size - 1];
                 size--;
@@ -94,9 +94,9 @@ public class Heapsort {
     }
 
     /**
-     * Made to be able to run script
+     * Made to be able to run script.
      * 
-     * @param args main args
+     * @param args - Main args.
      */
     public static void main(String[] args) {
     }
