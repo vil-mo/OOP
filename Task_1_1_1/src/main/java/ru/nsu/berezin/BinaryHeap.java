@@ -13,6 +13,10 @@ public class BinaryHeap {
     int[] buf;
     int size;
 
+    /**
+     * New instance of heap with capasity. It cannot grow it's capasity.
+     * @param capasity capasity of heap
+     */
     public BinaryHeap(int capasity) {
         buf = new int[capasity];
     }
