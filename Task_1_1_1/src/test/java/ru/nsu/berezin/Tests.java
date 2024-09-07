@@ -24,4 +24,18 @@ public class Tests {
         Heapsort.heapsort(my_arr);
         assertArrayEquals(my_arr, new int[] { -6, -4, -4, -4, -1, 0, 5 });
     }
+
+    @Test
+    void sorted() {
+        int[] my_arr = new int[] { 1, 2, 3, 4 };
+        Heapsort.heapsort(my_arr);
+        assertArrayEquals(my_arr, new int[] { 1, 2, 3, 4 });
+    }
+
+    @Test
+    void same() {
+        int[] my_arr = new int[] { 1, 1, 1, 1, 1 };
+        Heapsort.heapsort(my_arr);
+        assertArrayEquals(my_arr, new int[] { 1, 1, 1, 1, 1 });
+    }
 }

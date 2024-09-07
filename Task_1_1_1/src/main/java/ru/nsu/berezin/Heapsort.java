@@ -1,5 +1,4 @@
 package ru.nsu.berezin;
-import java.util.PriorityQueue;
 
 /**
  * Class that has method for heapsort.
@@ -8,18 +7,18 @@ public class Heapsort {
     private Heapsort() {}
 
     /**
-     * Heapsort uisng `PriorityQueue`.
+     * Heapsort uisng `BinaryHeap`.
      * 
      * @param array array that is being sorted. Mutates the passed array
      */
     public static void heapsort(int[] array) {
-        PriorityQueue<Integer> queue = new PriorityQueue<Integer>();
+        BinaryHeap heap = new BinaryHeap(array.length);
         for (int x : array) {
-            queue.add(x);
+            heap.add(x);
         }
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = queue.remove();
+            array[i] = heap.remove();
         }
     }
 
