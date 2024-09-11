@@ -1,9 +1,9 @@
 package ru.nsu.berezin;
 
 public class Card {
-    enum CardValue {
+
+    public enum CardValue {
         Ace,
-        One,
         Two,
         Three,
         Four,
@@ -15,21 +15,55 @@ public class Card {
         Ten,
         Jack,
         Queen,
-        King,
+        King;
+
+        @Override
+        public String toString() {
+            return switch (this) {
+                case Ace -> "Туз";
+                case Two -> "Двойка";
+                case Three -> "Тройка";
+                case Four -> "Четвёрка";
+                case Five -> "Пятёрка";
+                case Six -> "Шестёрка";
+                case Seven -> "Семёрка";
+                case Eight -> "Восьмёрка";
+                case Nine -> "Девятка";
+                case Ten -> "Десятка";
+                case Jack -> "Валет"; 
+                case Queen -> "Дама";
+                case King -> "Король";
+            };
+        }
     }
 
-    enum CardSuit {
+    public enum CardSuit {
         Hearts,
         Diamonds,
         Clubs,
-        Spades,
+        Spades;
+
+        @Override
+        public String toString() {
+            return switch (this) {
+                case Hearts -> "Червы";
+                case Diamonds -> "Бубны";
+                case Clubs -> "Крести";
+                case Spades -> "Пики";
+            };
+        }
     }
 
-    private CardValue value;
-    private CardSuit suit;
+    public final CardValue value;
+    public final CardSuit suit;
 
     Card(CardValue value, CardSuit suit) {
         this.value = value;
         this.suit = suit;
+    }
+
+    @Override
+    public String toString() {
+        return value.toString() + " " + suit.toString();
     }
 }
