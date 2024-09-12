@@ -56,14 +56,18 @@ public class Card {
 
     public final CardValue value;
     public final CardSuit suit;
+    public boolean closed = false;
 
-    Card(CardValue value, CardSuit suit) {
+    public Card(CardValue value, CardSuit suit) {
         this.value = value;
         this.suit = suit;
     }
 
     @Override
     public String toString() {
+        if (closed) {
+            return "<закрытая карта>";
+        }
         return value.toString() + " " + suit.toString();
     }
 }
