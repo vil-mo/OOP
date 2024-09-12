@@ -35,6 +35,48 @@ public class Card {
                 case King -> "Король";
             };
         }
+
+        /**
+         * Retruns bigger value of points, when hand is not losing even with such big values.
+         */
+        public int toPointsBig() {
+            return switch (this) {
+                case Ace -> 11;
+                case Two -> 2;
+                case Three -> 3;
+                case Four -> 4;
+                case Five -> 5;
+                case Six -> 6;
+                case Seven -> 7;
+                case Eight -> 8;
+                case Nine -> 9;
+                case Ten -> 10;
+                case Jack -> 10;
+                case Queen -> 10;
+                case King -> 10;
+            };
+        }
+
+        /**
+         * Returns smaller value of points used when hand would loose without that downgrade.
+         */
+        public int toPointsSmall() {
+            return switch (this) {
+                case Ace -> 1;
+                case Two -> 2;
+                case Three -> 3;
+                case Four -> 4;
+                case Five -> 5;
+                case Six -> 6;
+                case Seven -> 7;
+                case Eight -> 8;
+                case Nine -> 9;
+                case Ten -> 10;
+                case Jack -> 10;
+                case Queen -> 10;
+                case King -> 10;
+            };
+        }
     }
 
     public enum CardSuit {
