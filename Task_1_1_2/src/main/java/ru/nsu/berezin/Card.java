@@ -1,7 +1,14 @@
 package ru.nsu.berezin;
 
+/**
+ * Represents single card in the deck with value and suit. 
+ * It also can be closed (only affects toString call).
+ */
 public class Card {
 
+    /** 
+     * All possible values of a card
+    */
     public enum CardValue {
         Ace,
         Two,
@@ -79,6 +86,9 @@ public class Card {
         }
     }
 
+    /**
+     * All possible suits of a card.
+     */
     public enum CardSuit {
         Hearts,
         Diamonds,
@@ -96,10 +106,23 @@ public class Card {
         }
     }
 
+    /**
+     * Value of a card.
+     */
     public final CardValue value;
+    /**
+     * Suit of a card.
+     */
     public final CardSuit suit;
+    /**
+     * If true, the card is closed and `toString` will return `<закрытая карта>`.
+     * Default is false.
+     */
     public boolean closed = false;
 
+    /**
+     * New open card with provided value and suit.
+     */
     public Card(CardValue value, CardSuit suit) {
         this.value = value;
         this.suit = suit;

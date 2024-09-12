@@ -7,11 +7,17 @@ import java.util.Random;
 import ru.nsu.berezin.Card.CardSuit;
 import ru.nsu.berezin.Card.CardValue;
 
+/**
+ * Represents whole deck of cards. It can store up to 52 unique cards.
+ */
 public class CardDeck {
 
     HashSet<Card> leftCards = new HashSet(52);
     Random random = new Random();
 
+    /**
+     * New deck filled with 52 cards.
+     */
     public CardDeck() {
         refill();
     }
