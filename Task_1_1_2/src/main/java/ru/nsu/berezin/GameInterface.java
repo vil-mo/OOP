@@ -1,8 +1,8 @@
 package ru.nsu.berezin;
 
 /**
- * Game interface. It reacts to various game events and provides a way
- * for the player to interact with the game.
+ * Game interface. It reacts to various game events and provides a way for the
+ * player to interact with the game.
  *
  * It shouldn't mutate the game state. Game state only passed so that interface
  * can use state to determine, what to show to the player.
@@ -39,13 +39,13 @@ public interface GameInterface {
     public void playerTurnStarted();
 
     /**
-     * Called every time player is tasked with selecting an action.
+     * Called every time player is tasked with selecting an Action.
      */
-    public Game.PlayerAction requestedPlayerAction();
+    public Game.Action requestPlayerAction();
 
     /**
      * Called every time the card is dealt to player. Happens if player chooses
-     * `PlayerAction.DrawMore`.
+     * `Action.DrawMore`.
      *
      *
      * @param dealt - card that was dealt to player
@@ -53,8 +53,7 @@ public interface GameInterface {
     public void cardIsDealtToPlayer(Card dealt);
 
     /**
-     * Called when player's turn ends. Happens if player chooses
-     * `PlayerAction.Stop`.
+     * Called when player's turn ends. Happens if player chooses `Action.Stop`.
      */
     public void playerTurnEnded();
 
@@ -83,8 +82,8 @@ public interface GameInterface {
     public void dealerTurnEnded();
 
     /**
-     * Called when round ends. Happens right after `dealerTurnEnded`.
-     * `state.currentRound` is the number of the round that is ending.
+     * Called when round ends. `state.currentRound` is the number of the round
+     * that is ending.
      */
     public void roundEnded();
 
@@ -97,4 +96,9 @@ public interface GameInterface {
      * Called right after `roundEnded` if the dealer won.
      */
     public void dealerWon();
+
+    /**
+     * Called right after `roundEnded` if the game ended in a tie.
+     */
+    public void tie();
 }

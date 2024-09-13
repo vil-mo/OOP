@@ -1,5 +1,7 @@
 package ru.nsu.berezin;
 
+import java.util.stream.IntStream;
+
 /**
  * Game class. It's the entry point for the game.
  */
@@ -8,7 +10,7 @@ public final class Game {
     /**
      * Actions that player can take.
      */
-    public enum PlayerAction {
+    public enum Action {
         DrawMore,
         Stop,
     }
@@ -19,14 +21,151 @@ public final class Game {
      * Creates a new instance of the game. All events will call the methods of
      * the provided interface.
      *
-     * 
+     *
      * @param gameInterface - provides a way to interact with the game
      */
     public Game(GameInterface gameInterface) {
         this.gameInterface = gameInterface;
     }
 
+    /**
+     * Lose - hand has more than 21 points. Max - hand has exactly 21 points.
+     * Continue - hand has less than 21 points.
+     */
+    private enum CheckedHand {
+        Lose,
+        Max,
+        Continue,
+    }
+
+    private CheckedHand checkHand(Card[] hand) {
+        int points = IntStream.of(Dealer.handPoints(hand)).sum();
+
+        if (points == 21) {
+            return CheckedHand.Lose;
+        } else if (points > 21) {
+            return CheckedHand.Max;
+        } else {
+            return CheckedHand.Continue;
+        }
+    }
+
+    private Action requestDealerAction(Card[] hand) {
+        int points = IntStream.of(Dealer.handPoints(hand)).sum();
+
+        if (points < 17) {
+            return Action.DrawMore;
+        } else {
+            return Action.Stop;
+        }
+    }
+
+    private enum GameResult {
+        PlayerWon,
+        DealerWon,
+        Tie,
+    }
+
+    private GameResult compareHands(Card[] player, Card[] dealer) {
+        int playerPoints = IntStream.of(Dealer.handPoints(player)).sum();
+        int dealerPoints = IntStream.of(Dealer.handPoints(dealer)).sum();
+
+        if (playerPoints > 21) {
+            if (dealerPoints > 21) {
+                return GameResult.Tie;
+            } else {
+                return GameResult.DealerWon;
+            }
+        } else if (dealerPoints > 21) {
+            return GameResult.PlayerWon;
+        }
+
+        if (playerPoints > dealerPoints) {
+            return GameResult.PlayerWon;
+        } else if (playerPoints < dealerPoints) {
+            return GameResult.DealerWon;
+        } else {
+            return GameResult.Tie;
+        }
+    }
+
     public void run() {
-        //TODO: Implement the game
+        GameState state = new GameState();
+        gameInterface.setGameState(state);
+        gameInterface.gameStarted();
+
+        while (true) {
+            state.dealer.reset();
+            state.currentRound++;
+            gameInterface.roundStarted();
+
+            state.dealer.dealFirstHand();
+            gameInterface.firstHandDealt();
+
+            gameInterface.playerTurnStarted();
+
+            CheckedHand checkedPlayerHand = checkHand(state.dealer.getPlayerHand());
+
+            player_loop:
+            while (checkedPlayerHand == CheckedHand.Continue) {
+                Action action = gameInterface.requestPlayerAction();
+                switch (action) {
+                    case DrawMore -> {
+                        Card drawn = state.dealer.drawPlayer();
+                        gameInterface.cardIsDealtToPlayer(drawn);
+                    }
+                    case Stop -> {
+                        break player_loop;
+                    }
+                }
+
+                checkedPlayerHand = checkHand(state.dealer.getPlayerHand());
+            }
+
+            gameInterface.playerTurnEnded();
+
+            if (checkedPlayerHand != CheckedHand.Lose) {
+                gameInterface.dealerTurnStarted();
+                Card opened = state.dealer.openDealerCard();
+                gameInterface.dealerOpensCard(opened);
+
+                CheckedHand checkedDealerHand = checkHand(state.dealer.getDealerHand());
+
+                dealer_loop:
+                while (checkedDealerHand == CheckedHand.Continue) {
+                    Action action = requestDealerAction(state.dealer.getDealerHand());
+                    switch (action) {
+                        case DrawMore -> {
+                            Card drawn = state.dealer.drawDealer();
+                            gameInterface.cardIsDealtToDealer(drawn);
+                        }
+                        case Stop -> {
+                            break dealer_loop;
+                        }
+                    }
+
+                    checkedDealerHand = checkHand(state.dealer.getDealerHand());
+                }
+
+                gameInterface.dealerTurnEnded();
+            }
+
+            gameInterface.roundEnded();
+            GameResult result = compareHands(state.dealer.getPlayerHand(), state.dealer.getDealerHand());
+
+            switch (result) {
+                case PlayerWon -> {
+                    state.playerWins++;
+                    gameInterface.playerWon();
+                }
+                case DealerWon -> {
+                    state.dealerWins++;
+                    gameInterface.dealerWon();
+                }
+                case Tie -> {
+                    gameInterface.tie();
+                }
+            }
+        }
     }
 }

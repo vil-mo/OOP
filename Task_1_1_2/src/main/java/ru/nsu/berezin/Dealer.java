@@ -3,7 +3,8 @@ package ru.nsu.berezin;
 import java.util.ArrayList;
 
 /**
- * Dealer has a deck and can draw cards from the deck for player and dealer itself.
+ * Dealer has a deck and can draw cards from the deck for player and dealer
+ * itself.
  */
 public class Dealer {
 
@@ -30,31 +31,51 @@ public class Dealer {
 
     /**
      * Draw random card in the player's hand.
+     *
+     *
+     * @return drawn card
      */
-    public void drawPlayer() {
+    public Card drawPlayer() {
         final Card drawn = deck.draw();
         playerHand.add(drawn);
+        return drawn;
     }
 
-
     /**
-     * Draw random card in the dealer's hand.
-     * If it's the first card of the dealer, it will be closed.
+     * Draw random card in the dealer's hand. If it's the first card of the
+     * dealer, it will be closed.
+     *
+     *
+     * @return drawn card
      */
-    public void drawDealer() {
+    public Card drawDealer() {
         Card drawn = deck.draw();
         if (dealerHand.isEmpty()) {
             drawn.closed = true;
         }
         dealerHand.add(drawn);
+        return drawn;
     }
 
     /**
-     * Opens the closed card of the dealer.
-     * Throws exception if dealer's hand is empty. 
+     * Deals the first hand of the round. It draws two cards for player and two
+     * cards for dealer.
      */
-    public void openDealerCard() {
-        dealerHand.get(0).closed = false;
+    public void dealFirstHand() {
+        drawPlayer();
+        drawPlayer();
+        drawDealer();
+        drawDealer();
+    }
+
+    /**
+     * Opens the closed card of the dealer. Throws exception if dealer's hand is
+     * empty.
+     */
+    public Card openDealerCard() throws IndexOutOfBoundsException {
+        Card card = dealerHand.get(0);
+        card.closed = false;
+        return card;
     }
 
     /**
@@ -65,8 +86,8 @@ public class Dealer {
     }
 
     /**
-     * Returns dealer's hand. This clones hand's cards.
-     * If `openDealerCard` wasn't called, first card will be closed.
+     * Returns dealer's hand. This clones hand's cards. If `openDealerCard`
+     * wasn't called, first card will be closed.
      */
     public Card[] getDealerHand() {
         return (Card[]) dealerHand.toArray();
