@@ -7,7 +7,7 @@ package ru.nsu.berezin;
  * It shouldn't mutate the game state. Game state only passed so that interface
  * can use state to determine, what to show to the player.
  */
-public interface GameInterface {
+public interface GameInterface<E extends Exception> {
 
     /**
      * Sets the game state. Every other callback will be called only when the
@@ -18,30 +18,30 @@ public interface GameInterface {
     /**
      * Called once when game starts.
      */
-    public void gameStarted();
+    public void gameStarted() throws E;
 
     /**
      * Called when round starts. State is the state of the game at the start of
      * the round. `state.currentRound` is the number of the round that is
      * starting.
      */
-    public void roundStarted();
+    public void roundStarted() throws E;
 
     /**
      * Called when the first hand of the round is dealt. You can access it using
      * `state.dealer`.
      */
-    public void firstHandDealt();
+    public void firstHandDealt() throws E;
 
     /**
      * Called when player turn starts, right after `firstHandDealt`.
      */
-    public void playerTurnStarted();
+    public void playerTurnStarted() throws E;
 
     /**
      * Called every time player is tasked with selecting an Action.
      */
-    public Game.Action requestPlayerAction();
+    public Game.Action requestPlayerAction() throws E;
 
     /**
      * Called every time the card is dealt to player. Happens if player chooses
@@ -50,23 +50,23 @@ public interface GameInterface {
      *
      * @param dealt - card that was dealt to player
      */
-    public void cardIsDealtToPlayer(Card dealt);
+    public void cardIsDealtToPlayer(Card dealt) throws E;
 
     /**
      * Called when player's turn ends. Happens if player chooses `Action.Stop`.
      */
-    public void playerTurnEnded();
+    public void playerTurnEnded() throws E;
 
     /**
      * Called when dealer's turn starts.
      */
-    public void dealerTurnStarted();
+    public void dealerTurnStarted() throws E;
 
     /**
      * Called when dealer opens his closed card. Happens right after
      * `dealerTurnStarted`.
      */
-    public void dealerOpensCard(Card opened);
+    public void dealerOpensCard(Card opened) throws E;
 
     /**
      * Called every time card is dealt to dealer.
@@ -74,31 +74,31 @@ public interface GameInterface {
      *
      * @param dealt - card that was dealt to dealer
      */
-    public void cardIsDealtToDealer(Card dealt);
+    public void cardIsDealtToDealer(Card dealt) throws E;
 
     /**
      * Called when dealer's turn ends.
      */
-    public void dealerTurnEnded();
+    public void dealerTurnEnded() throws E;
 
     /**
      * Called when round ends. `state.currentRound` is the number of the round
      * that is ending.
      */
-    public void roundEnded();
+    public void roundEnded() throws E;
 
     /**
      * Called right after `roundEnded` if the player won.
      */
-    public void playerWon();
+    public void playerWon() throws E;
 
     /**
      * Called right after `roundEnded` if the dealer won.
      */
-    public void dealerWon();
+    public void dealerWon() throws E;
 
     /**
      * Called right after `roundEnded` if the game ended in a tie.
      */
-    public void tie();
+    public void tie() throws E;
 }

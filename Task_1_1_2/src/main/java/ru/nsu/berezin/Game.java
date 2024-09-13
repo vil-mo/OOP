@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 /**
  * Game class. It's the entry point for the game.
  */
-public final class Game {
+public final class Game<E extends Exception> {
 
     /**
      * Actions that player can take.
@@ -15,7 +15,7 @@ public final class Game {
         Stop,
     }
 
-    GameInterface gameInterface;
+    GameInterface<E> gameInterface;
 
     /**
      * Creates a new instance of the game. All events will call the methods of
@@ -24,7 +24,7 @@ public final class Game {
      *
      * @param gameInterface - provides a way to interact with the game
      */
-    public Game(GameInterface gameInterface) {
+    public Game(GameInterface<E> gameInterface) {
         this.gameInterface = gameInterface;
     }
 
@@ -89,7 +89,7 @@ public final class Game {
         }
     }
 
-    public void run() {
+    public void run() throws E{
         GameState state = new GameState();
         gameInterface.setGameState(state);
         gameInterface.gameStarted();
