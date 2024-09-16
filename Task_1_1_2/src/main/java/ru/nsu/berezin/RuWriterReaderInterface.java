@@ -3,16 +3,17 @@ package ru.nsu.berezin;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.Scanner;
 
 public class RuWriterReaderInterface implements GameInterface<IOException> {
 
     Writer writer;
-    Reader reader;
+    Scanner scanner;
     GameState state = null;
 
     public RuWriterReaderInterface(Writer writer, Reader reader) {
         this.writer = writer;
-        this.reader = reader;
+        this.scanner = new Scanner(reader);
     }
 
     private void writeHand(Card[] hand) throws IOException {
@@ -85,16 +86,21 @@ public class RuWriterReaderInterface implements GameInterface<IOException> {
         writer.write("Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться...\n");
 
         while (true) {
-            char c = (char) reader.read();
-            switch (c) {
-                case '1' -> {
+            writer.flush();
+            if (!scanner.hasNextLine()) {
+                throw new IOException("Пользователь закрыл поток ввода");
+            }
+            String line = scanner.nextLine();
+
+            switch (line) {
+                case "1" -> {
                     return Game.Action.DrawMore;
                 }
-                case '0' -> {
+                case "0" -> {
                     return Game.Action.Stop;
                 }
                 default -> {
-                    writer.write("\nНеверный ввод. Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться...\n");
+                    writer.write("Неверный ввод. Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться...\n");
                 }
             }
         }
@@ -150,20 +156,20 @@ public class RuWriterReaderInterface implements GameInterface<IOException> {
     public void playerWon() throws IOException {
         writer.write("Вы выиграли раунд! ");
         writeScore();
-        writer.write("\n");
+        writer.write("\n\n\n");
     }
 
     @Override
     public void dealerWon() throws IOException {
         writer.write("Дилер выиграл раунд! ");
         writeScore();
-        writer.write("\n");
+        writer.write("\n\n\n");
     }
 
     @Override
     public void tie() throws IOException {
         writer.write("Ничья! ");
         writeScore();
-        writer.write("\n");
+        writer.write("\n\n\n");
     }
 }

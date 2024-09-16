@@ -8,6 +8,10 @@ application {
     mainClass = 'ru.nsu.berezin.Main'
 }
 
+run {
+    standardInput = System.in
+}
+
 repositories {
     mavenCentral()
 }

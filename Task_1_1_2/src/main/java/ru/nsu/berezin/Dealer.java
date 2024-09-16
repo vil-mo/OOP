@@ -82,7 +82,8 @@ public class Dealer {
      * Returns player's hand. This clones hand's cards.
      */
     public Card[] getPlayerHand() {
-        return (Card[]) playerHand.toArray();
+        Card[] array = new Card[playerHand.size()];
+        return playerHand.toArray(array);
     }
 
     /**
@@ -90,7 +91,8 @@ public class Dealer {
      * wasn't called, first card will be closed.
      */
     public Card[] getDealerHand() {
-        return (Card[]) dealerHand.toArray();
+        Card[] array = new Card[dealerHand.size()];
+        return dealerHand.toArray(array);
     }
 
     /**
