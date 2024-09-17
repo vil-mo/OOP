@@ -18,6 +18,10 @@ public class RuWriterReaderInterface implements GameInterface<IOException> {
     /**
      * Creates a new interface that uses `writer` and `reader` for interaction
      * with the player.
+     * 
+     * 
+     * @param writer - used writer
+     * @param reader - used reader
      */
     public RuWriterReaderInterface(Writer writer, Reader reader) {
         this.writer = writer;

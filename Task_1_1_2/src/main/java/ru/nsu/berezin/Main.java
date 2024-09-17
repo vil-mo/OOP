@@ -11,8 +11,14 @@ import java.io.Writer;
  */
 public class Main {
 
+    private Main() {
+    }
+
     /**
      * Main method.
+     * 
+     * 
+     * @param args - not used
      */
     public static void main(String[] args) {
 

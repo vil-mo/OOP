@@ -45,6 +45,10 @@ public class Card {
 
         /**
          * Retruns bigger value of points, when hand is not losing even with such big values.
+         * In particular, it returns 11 for Ace.
+         * 
+         * 
+         * @return - points
          */
         public int toPointsBig() {
             return switch (this) {
@@ -66,6 +70,10 @@ public class Card {
 
         /**
          * Returns smaller value of points used when hand would loose without that downgrade.
+         * In particular, it returns 1 for Ace.
+         * 
+         *
+         * @return - points
          */
         public int toPointsSmall() {
             return switch (this) {
@@ -115,13 +123,17 @@ public class Card {
      */
     public final CardSuit suit;
     /**
-     * If true, the card is closed and toString will return \<закрытая карта\>
+     * If true, the card is closed and toString will return {@literal <закрытая карта>}
      * Default is false.
      */
     public boolean closed = false;
 
     /**
      * New open card with provided value and suit.
+     * 
+     * 
+     * @param value - value of the card
+     * @param suit - suit of the card
      */
     public Card(CardValue value, CardSuit suit) {
         this.value = value;

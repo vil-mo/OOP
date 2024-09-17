@@ -24,4 +24,10 @@ public class GameState {
      * The dealer. Can you can use it to get hands of both parties.
      */
     public Dealer dealer = new Dealer();
+
+    /**
+     * Creates a new state.
+     */
+    public GameState() {
+    }
 }

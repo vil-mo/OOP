@@ -69,8 +69,11 @@ public class Dealer {
     }
 
     /**
-     * Opens the closed card of the dealer. Throws exception if dealer's hand is
-     * empty.
+     * Opens the closed card of the dealer.
+     * 
+     * 
+     * @return - opened card
+     * @throws IndexOutOfBoundsException - if dealer's hand is empty
      */
     public Card openDealerCard() throws IndexOutOfBoundsException {
         Card card = dealerHand.get(0);
@@ -80,6 +83,9 @@ public class Dealer {
 
     /**
      * Returns player's hand. This clones hand's cards.
+     * 
+     * 
+     * @return - player's hand
      */
     public Card[] getPlayerHand() {
         Card[] array = new Card[playerHand.size()];
@@ -89,6 +95,9 @@ public class Dealer {
     /**
      * Returns dealer's hand. This clones hand's cards. If `openDealerCard`
      * wasn't called, first card will be closed.
+     * 
+     * 
+     * @return - dealer's hand
      */
     public Card[] getDealerHand() {
         Card[] array = new Card[dealerHand.size()];
@@ -97,6 +106,10 @@ public class Dealer {
 
     /**
      * Get the point value of the hand of cards.
+     * 
+     * 
+     * @param cards - cards to get points from
+     * @return - For each card in the array, it's point value is at the same index in the array.
      */
     public static int[] handPoints(Card[] cards) {
         int[] points = new int[cards.length];

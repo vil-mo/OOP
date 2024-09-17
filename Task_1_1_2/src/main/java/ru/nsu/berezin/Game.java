@@ -4,14 +4,24 @@ import java.util.stream.IntStream;
 
 /**
  * Game class. It's the entry point for the game.
+ * 
+ * 
+ * @param <E> - type of exception that can be thrown by the interface
  */
 public final class Game<E extends Exception> {
 
     /**
-     * Actions that player can take.
+     * Actions that can be taken in a turn.
      */
     public enum Action {
+        /**
+         * Draw more cards.
+         */
         DrawMore,
+        /**
+         * Stop your turn and pass the turn to the dealer 
+         * (or end the game if it's a dealer) who stops.
+         */
         Stop,
     }
 
@@ -91,6 +101,9 @@ public final class Game<E extends Exception> {
 
     /**
      * Runs the game in an infinite loop.
+     * 
+     * 
+     * @throws E - exception that can be thrown by the interface
      */
     public void run() throws E {
         GameState state = new GameState();
