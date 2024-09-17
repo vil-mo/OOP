@@ -46,8 +46,7 @@ public class Card {
         /**
          * Retruns bigger value of points, when hand is not losing even with such big values.
          * In particular, it returns 11 for Ace.
-         * 
-         * 
+         *
          * @return - points
          */
         public int toPointsBig() {
@@ -71,7 +70,6 @@ public class Card {
         /**
          * Returns smaller value of points used when hand would loose without that downgrade.
          * In particular, it returns 1 for Ace.
-         * 
          *
          * @return - points
          */
@@ -130,8 +128,7 @@ public class Card {
 
     /**
      * New open card with provided value and suit.
-     * 
-     * 
+     *
      * @param value - value of the card
      * @param suit - suit of the card
      */

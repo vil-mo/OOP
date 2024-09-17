@@ -16,8 +16,7 @@ public class Main {
 
     /**
      * Main method.
-     * 
-     * 
+     *
      * @param args - not used
      */
     public static void main(String[] args) {

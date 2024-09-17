@@ -32,7 +32,6 @@ public class Dealer {
     /**
      * Draw random card in the player's hand.
      *
-     *
      * @return drawn card
      */
     public Card drawPlayer() {
@@ -44,7 +43,6 @@ public class Dealer {
     /**
      * Draw random card in the dealer's hand. If it's the first card of the
      * dealer, it will be closed.
-     *
      *
      * @return drawn card
      */
@@ -70,8 +68,7 @@ public class Dealer {
 
     /**
      * Opens the closed card of the dealer.
-     * 
-     * 
+     *
      * @return - opened card
      * @throws IndexOutOfBoundsException - if dealer's hand is empty
      */
@@ -83,8 +80,7 @@ public class Dealer {
 
     /**
      * Returns player's hand. This clones hand's cards.
-     * 
-     * 
+     *
      * @return - player's hand
      */
     public Card[] getPlayerHand() {
@@ -95,8 +91,7 @@ public class Dealer {
     /**
      * Returns dealer's hand. This clones hand's cards. If `openDealerCard`
      * wasn't called, first card will be closed.
-     * 
-     * 
+     *
      * @return - dealer's hand
      */
     public Card[] getDealerHand() {
@@ -106,8 +101,7 @@ public class Dealer {
 
     /**
      * Get the point value of the hand of cards.
-     * 
-     * 
+     *
      * @param cards - cards to get points from
      * @return - For each card in the array, it's point value is at the same index in the array.
      */

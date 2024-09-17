@@ -4,8 +4,7 @@ import java.util.stream.IntStream;
 
 /**
  * Game class. It's the entry point for the game.
- * 
- * 
+ *
  * @param <E> - type of exception that can be thrown by the interface
  */
 public final class Game<E extends Exception> {
@@ -30,7 +29,6 @@ public final class Game<E extends Exception> {
     /**
      * Creates a new instance of the game. All events will call the methods of
      * the provided interface.
-     *
      *
      * @param gameInterface - provides a way to interact with the game
      */
@@ -101,8 +99,7 @@ public final class Game<E extends Exception> {
 
     /**
      * Runs the game in an infinite loop.
-     * 
-     * 
+     *
      * @throws E - exception that can be thrown by the interface
      */
     public void run() throws E {
