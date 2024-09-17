@@ -7,7 +7,7 @@ package ru.nsu.berezin;
 public class Card {
 
     /** 
-     * All possible values of a card
+     * All possible values of a card.
     */
     public enum CardValue {
         Ace,
@@ -115,7 +115,7 @@ public class Card {
      */
     public final CardSuit suit;
     /**
-     * If true, the card is closed and `toString` will return `<закрытая карта>`.
+     * If true, the card is closed and toString will return \<закрытая карта\>
      * Default is false.
      */
     public boolean closed = false;

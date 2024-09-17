@@ -6,8 +6,14 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 
+/**
+ * Main class. It runs the game.
+ */
 public class Main {
 
+    /**
+     * Main method.
+     */
     public static void main(String[] args) {
 
         Writer writer = new OutputStreamWriter(System.out);

@@ -5,12 +5,20 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Scanner;
 
+/**
+ * Interface that implements game logic using `Writer` and `Reader` for
+ * interaction with the player.
+ */
 public class RuWriterReaderInterface implements GameInterface<IOException> {
 
     Writer writer;
     Scanner scanner;
     GameState state = null;
 
+    /**
+     * Creates a new interface that uses `writer` and `reader` for interaction
+     * with the player.
+     */
     public RuWriterReaderInterface(Writer writer, Reader reader) {
         this.writer = writer;
         this.scanner = new Scanner(reader);

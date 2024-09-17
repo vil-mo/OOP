@@ -105,9 +105,9 @@ public class Dealer {
 
         int i = 0;
         for (Card card : cards) {
-            int card_points = card.value.toPointsBig();
-            points[i] = card_points;
-            sum += card_points;
+            int cardPoints = card.value.toPointsBig();
+            points[i] = cardPoints;
+            sum += cardPoints;
 
             i++;
         }
@@ -115,8 +115,8 @@ public class Dealer {
         if (sum > 21) {
             i = 0;
             for (Card card : cards) {
-                int card_points = card.value.toPointsSmall();
-                points[i] = card_points;
+                int cardPoints = card.value.toPointsSmall();
+                points[i] = cardPoints;
 
                 i++;
             }

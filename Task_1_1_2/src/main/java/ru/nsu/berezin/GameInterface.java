@@ -3,7 +3,6 @@ package ru.nsu.berezin;
 /**
  * Game interface. It reacts to various game events and provides a way for the
  * player to interact with the game.
- *
  * It shouldn't mutate the game state. Game state only passed so that interface
  * can use state to determine, what to show to the player.
  */

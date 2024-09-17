@@ -89,7 +89,10 @@ public final class Game<E extends Exception> {
         }
     }
 
-    public void run() throws E{
+    /**
+     * Runs the game in an infinite loop.
+     */
+    public void run() throws E {
         GameState state = new GameState();
         gameInterface.setGameState(state);
         gameInterface.gameStarted();
@@ -151,7 +154,10 @@ public final class Game<E extends Exception> {
             }
 
             gameInterface.roundEnded();
-            GameResult result = compareHands(state.dealer.getPlayerHand(), state.dealer.getDealerHand());
+            GameResult result = compareHands(
+                    state.dealer.getPlayerHand(),
+                    state.dealer.getDealerHand()
+            );
 
             switch (result) {
                 case PlayerWon -> {

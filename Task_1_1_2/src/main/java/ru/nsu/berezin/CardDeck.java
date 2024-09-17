@@ -3,7 +3,6 @@ package ru.nsu.berezin;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-
 import ru.nsu.berezin.Card.CardSuit;
 import ru.nsu.berezin.Card.CardValue;
 
@@ -40,10 +39,10 @@ public class CardDeck {
      * @return card being drawn.
      */
     public Card draw() {
-        int index_to_draw = random.nextInt(leftCards.size());
+        int indexToDraw = random.nextInt(leftCards.size());
 
         Iterator<Card> iterator = leftCards.iterator();
-        for (int i = 0; i < index_to_draw; i++) {
+        for (int i = 0; i < indexToDraw; i++) {
             iterator.next();
         }
 
