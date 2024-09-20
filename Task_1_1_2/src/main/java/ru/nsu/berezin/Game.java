@@ -49,9 +49,9 @@ public final class Game<E extends Exception> {
     private CheckedHand checkHand(Card[] hand) {
         int points = IntStream.of(Dealer.handPoints(hand)).sum();
 
-        if (points == 21) {
+        if (points > 21) {
             return CheckedHand.Lose;
-        } else if (points > 21) {
+        } else if (points == 21) {
             return CheckedHand.Max;
         } else {
             return CheckedHand.Continue;
@@ -137,7 +137,7 @@ public final class Game<E extends Exception> {
 
             gameInterface.playerTurnEnded();
 
-            if (checkedPlayerHand != CheckedHand.Lose) {
+            if (checkedPlayerHand == CheckedHand.Continue) {
                 gameInterface.dealerTurnStarted();
                 Card opened = state.dealer.openDealerCard();
                 gameInterface.dealerOpensCard(opened);
