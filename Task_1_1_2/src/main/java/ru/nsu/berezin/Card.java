@@ -144,4 +144,18 @@ public class Card {
         }
         return value.toString() + " " + suit.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Card card = (Card) o;
+        return value == card.value && suit == card.suit;
+    }
+
+    @Override
+    public int hashCode() {
+        return value.ordinal() * 13 + suit.ordinal();
+    }
 }

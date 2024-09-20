@@ -3,7 +3,6 @@ package ru.nsu.berezin;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-
 import ru.nsu.berezin.Card.CardSuit;
 import ru.nsu.berezin.Card.CardValue;
 

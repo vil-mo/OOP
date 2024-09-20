@@ -1,7 +1,6 @@
 package ru.nsu.berezin;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.Writer;
 import java.util.Scanner;
 
@@ -22,7 +21,7 @@ public class RuWriterReaderInterface implements GameInterface<IOException> {
      * @param writer - used writer
      * @param reader - used reader
      */
-    public RuWriterReaderInterface(Writer writer, Reader reader) {
+    public RuWriterReaderInterface(Writer writer, Readable reader) {
         this.writer = writer;
         this.scanner = new Scanner(reader);
     }
@@ -111,7 +110,8 @@ public class RuWriterReaderInterface implements GameInterface<IOException> {
                     return Game.Action.Stop;
                 }
                 default -> {
-                    writer.write("Неверный ввод. Введите \"1\", чтобы взять карту, и \"0\", чтобы остановиться...\n");
+                    writer.write("Неверный ввод. Введите \"1\", чтобы взять карту, ");
+                    writer.write("и \"0\", чтобы остановиться...\n");
                 }
             }
         }
