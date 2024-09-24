@@ -172,11 +172,14 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="draw()">
 <h3>draw</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in ru.nsu.berezin">Card</a></span>&nbsp;<span class="element-name">draw</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in ru.nsu.berezin">Card</a></span>&nbsp;<span class="element-name">draw</span>()
+          throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></span></div>
 <div class="block">Removes random card from the deck and returns it.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>card being drawn.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - if deck is empty</dd>
 </dl>
 </section>
 </li>
