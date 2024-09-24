@@ -1,14 +1,13 @@
 package ru.nsu.berezin;
 
 import java.util.HashSet;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 import ru.nsu.berezin.Card.CardSuit;
 import ru.nsu.berezin.Card.CardValue;
 
-class Tests {
+class SimpleTests {
+
     @Test
     void cardDeckSizeWthenDrawnAndRefilled() {
         assertEquals(new Card(CardValue.Ace, CardSuit.Clubs), new Card(CardValue.Ace, CardSuit.Clubs));
@@ -52,8 +51,8 @@ class Tests {
         assertEquals(48, dealer.deck.leftCards.size());
         assertEquals(2, dealer.playerHand.size());
         assertEquals(2, dealer.dealerHand.size());
-        assert(dealer.dealerHand.get(0).closed);
-        assert(!dealer.dealerHand.get(1).closed);
+        assert dealer.dealerHand.get(0).closed;
+        assert !dealer.dealerHand.get(1).closed;
 
         dealer.drawDealer();
         assertEquals(47, dealer.deck.leftCards.size());
@@ -78,11 +77,11 @@ class Tests {
         }
 
         dealer.openDealerCard();
-        assert(!dealer.dealerHand.get(0).closed);
-    
+        assert !dealer.dealerHand.get(0).closed;
+
         dealer.reset();
         assertEquals(52, dealer.deck.leftCards.size());
-        assertEquals(0, dealer.playerHand.size());        
+        assertEquals(0, dealer.playerHand.size());
         assertEquals(0, dealer.dealerHand.size());
     }
 
@@ -138,5 +137,4 @@ class Tests {
         assertEquals(10, CardValue.King.toPointsSmall());
     }
 
-    
 }
