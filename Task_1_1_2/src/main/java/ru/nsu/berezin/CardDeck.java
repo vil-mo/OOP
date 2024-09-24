@@ -36,8 +36,13 @@ public class CardDeck {
      * Removes random card from the deck and returns it.
      *
      * @return card being drawn.
+     * @throws IllegalStateException if deck is empty
      */
-    public Card draw() {
+    public Card draw() throws IllegalStateException {
+        if (leftCards.isEmpty()) {
+            throw new IllegalStateException("Deck is empty");
+        }
+
         int indexToDraw = random.nextInt(leftCards.size());
 
         Iterator<Card> iterator = leftCards.iterator();

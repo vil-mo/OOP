@@ -10,7 +10,10 @@ class SimpleTests {
 
     @Test
     void cardDeckSizeWthenDrawnAndRefilled() {
-        assertEquals(new Card(CardValue.Ace, CardSuit.Clubs), new Card(CardValue.Ace, CardSuit.Clubs));
+        assertEquals(
+                new Card(CardValue.Ace, CardSuit.Clubs),
+                new Card(CardValue.Ace, CardSuit.Clubs)
+        );
 
         CardDeck deck = new CardDeck();
         assertEquals(52, deck.leftCards.size());
