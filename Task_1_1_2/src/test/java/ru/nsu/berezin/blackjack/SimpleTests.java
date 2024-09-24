@@ -56,7 +56,7 @@ class SimpleTests {
         Assertions.assertEquals(48, dealer.getCardDeck().size());
         Assertions.assertEquals(2, dealer.getPlayerHand().size());
         Assertions.assertEquals(2, dealer.getDealerHand().size());
-        assert dealer.getPlayerHand().get(0).isClosed();
+        assert dealer.getDealerHand().get(0).isClosed();
         assert !dealer.getDealerHand().get(1).isClosed();
 
         dealer.drawDealer();

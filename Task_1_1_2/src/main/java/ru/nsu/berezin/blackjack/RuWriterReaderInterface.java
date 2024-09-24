@@ -83,6 +83,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#gameStarted()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -95,6 +97,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#roundStarted()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -107,6 +111,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#firstHandDealt()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -120,6 +126,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#playerTurnStarted()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -132,6 +140,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#requestPlayerAction()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -165,6 +175,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#cardIsDealtToPlayer(Card)}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -182,6 +194,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#dealerTurnStarted()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -194,6 +208,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#dealerOpensCard(Card)}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -207,6 +223,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#cardIsDealtToDealer(Card)}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -228,6 +246,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#playerWon()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -242,6 +262,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#dealerWon()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
@@ -256,6 +278,8 @@ public class RuWriterReaderInterface implements GameInterface {
     }
 
     /**
+     * See {@link GameInterface#tie()}
+     * 
      * @throws RuntimeException - if IOException occurs
      */
     @Override
