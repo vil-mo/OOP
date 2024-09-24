@@ -48,7 +48,11 @@ class TestInterface implements GameInterface<Exception> {
     @Override
     public Game.Action requestPlayerAction() throws Exception {
         requestPlayerActionAmount++;
-        return Game.Action.DrawMore;
+        if (requestPlayerActionAmount < 2) {
+            return Game.Action.DrawMore;
+        } else {
+            return Game.Action.Stop;
+        }
     }
 
     @Override
