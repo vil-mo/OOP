@@ -5,16 +5,16 @@
 <title>GameInterface (Task_1_1_2 API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: ru.nsu.berezin, interface: GameInterface">
+<meta name="description" content="declaration: package: ru.nsu.berezin.blackjack, interface: GameInterface">
 <meta name="generator" content="javadoc/ClassWriterImpl">
-<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../script-dir/jquery-ui.min.css" title="Style">
-<script type="text/javascript" src="../../../script.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-3.6.1.min.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var pathtoroot = "../../../";
+<script type="text/javascript">var pathtoroot = "../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -29,8 +29,8 @@ loadScripts(document, 'script');</script>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../index-all.html">Index</a></li>
-<li><a href="../../../help-doc.html#class">Help</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html#class">Help</a></li>
 </ul>
 <ul class="sub-nav-list-small">
 <li>
@@ -68,7 +68,7 @@ loadScripts(document, 'script');</script>
 <li><a href="#method-detail">Method</a></li>
 </ul>
 </div>
-<div class="nav-list-search"><a href="../../../search.html">SEARCH</a>
+<div class="nav-list-search"><a href="../../../../search.html">SEARCH</a>
 <input type="text" id="search-input" disabled placeholder="Search">
 <input type="reset" id="reset-button" disabled value="reset">
 </div>
@@ -80,20 +80,16 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.berezin</a></div>
-<h1 title="Interface GameInterface" class="title">Interface GameInterface&lt;E extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&gt;</h1>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.berezin.blackjack</a></div>
+<h1 title="Interface GameInterface" class="title">Interface GameInterface</h1>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
-<dt>Type Parameters:</dt>
-<dd><code>E</code> - - type of exception that can be thrown by the interface</dd>
-</dl>
-<dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="RuWriterReaderInterface.html" title="class in ru.nsu.berezin">RuWriterReaderInterface</a></code></dd>
+<dd><code><a href="RuWriterReaderInterface.html" title="class in ru.nsu.berezin.blackjack">RuWriterReaderInterface</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">GameInterface&lt;E extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a>&gt;</span></div>
+<div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">GameInterface</span></div>
 <div class="block">Game interface. It reacts to various game events and provides a way for the
  player to interact with the game.
  It shouldn't mutate the game state. Game state only passed so that interface
@@ -113,17 +109,17 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#cardIsDealtToDealer(ru.nsu.berezin.Card)" class="member-name-link">cardIsDealtToDealer</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;dealt)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#cardIsDealtToDealer(ru.nsu.berezin.blackjack.Card)" class="member-name-link">cardIsDealtToDealer</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;dealt)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Called every time card is dealt to dealer.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#cardIsDealtToPlayer(ru.nsu.berezin.Card)" class="member-name-link">cardIsDealtToPlayer</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;dealt)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#cardIsDealtToPlayer(ru.nsu.berezin.blackjack.Card)" class="member-name-link">cardIsDealtToPlayer</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;dealt)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Called every time the card is dealt to player.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dealerOpensCard(ru.nsu.berezin.Card)" class="member-name-link">dealerOpensCard</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;opened)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dealerOpensCard(ru.nsu.berezin.blackjack.Card)" class="member-name-link">dealerOpensCard</a><wbr>(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;opened)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Called when dealer opens his closed card.</div>
 </div>
@@ -167,7 +163,7 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Called right after `roundEnded` if the player won.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Game.Action.html" title="enum class in ru.nsu.berezin">Game.Action</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Game.Action.html" title="enum class in ru.nsu.berezin.blackjack">Game.Action</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#requestPlayerAction()" class="member-name-link">requestPlayerAction</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Called every time player is tasked with selecting an Action.</div>
@@ -183,7 +179,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Called when round starts.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setGameState(ru.nsu.berezin.GameState)" class="member-name-link">setGameState</a><wbr>(<a href="GameState.html" title="class in ru.nsu.berezin">GameState</a>&nbsp;state)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setGameState(ru.nsu.berezin.blackjack.GameState)" class="member-name-link">setGameState</a><wbr>(<a href="GameState.html" title="class in ru.nsu.berezin.blackjack">GameState</a>&nbsp;state)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Sets the game state.</div>
 </div>
@@ -207,9 +203,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="setGameState(ru.nsu.berezin.GameState)">
+<section class="detail" id="setGameState(ru.nsu.berezin.blackjack.GameState)">
 <h3>setGameState</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setGameState</span><wbr><span class="parameters">(<a href="GameState.html" title="class in ru.nsu.berezin">GameState</a>&nbsp;state)</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setGameState</span><wbr><span class="parameters">(<a href="GameState.html" title="class in ru.nsu.berezin.blackjack">GameState</a>&nbsp;state)</span></div>
 <div class="block">Sets the game state. Every other callback will be called only when the
  event happens in the state that is passed to this method.</div>
 <dl class="notes">
@@ -221,195 +217,128 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="gameStarted()">
 <h3>gameStarted</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">gameStarted</span>()
-          throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">gameStarted</span>()</div>
 <div class="block">Called once when game starts.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="roundStarted()">
 <h3>roundStarted</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">roundStarted</span>()
-           throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">roundStarted</span>()</div>
 <div class="block">Called when round starts. State is the state of the game at the start of
  the round. `state.currentRound` is the number of the round that is
  starting.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="firstHandDealt()">
 <h3>firstHandDealt</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">firstHandDealt</span>()
-             throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">firstHandDealt</span>()</div>
 <div class="block">Called when the first hand of the round is dealt. You can access it using
  `state.dealer`.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="playerTurnStarted()">
 <h3>playerTurnStarted</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerTurnStarted</span>()
-                throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerTurnStarted</span>()</div>
 <div class="block">Called when player turn starts, right after `firstHandDealt`.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="requestPlayerAction()">
 <h3>requestPlayerAction</h3>
-<div class="member-signature"><span class="return-type"><a href="Game.Action.html" title="enum class in ru.nsu.berezin">Game.Action</a></span>&nbsp;<span class="element-name">requestPlayerAction</span>()
-                         throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type"><a href="Game.Action.html" title="enum class in ru.nsu.berezin.blackjack">Game.Action</a></span>&nbsp;<span class="element-name">requestPlayerAction</span>()</div>
 <div class="block">Called every time player is tasked with selecting an Action.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>- action to perform</dd>
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="cardIsDealtToPlayer(ru.nsu.berezin.Card)">
+<section class="detail" id="cardIsDealtToPlayer(ru.nsu.berezin.blackjack.Card)">
 <h3>cardIsDealtToPlayer</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">cardIsDealtToPlayer</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;dealt)</span>
-                  throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">cardIsDealtToPlayer</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;dealt)</span></div>
 <div class="block">Called every time the card is dealt to player. Happens if player chooses
  `Action.DrawMore`.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dealt</code> - - card that was dealt to player</dd>
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="playerTurnEnded()">
 <h3>playerTurnEnded</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerTurnEnded</span>()
-              throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerTurnEnded</span>()</div>
 <div class="block">Called when player's turn ends. Happens if player chooses `Action.Stop`.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="dealerTurnStarted()">
 <h3>dealerTurnStarted</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerTurnStarted</span>()
-                throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerTurnStarted</span>()</div>
 <div class="block">Called when dealer's turn starts.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="dealerOpensCard(ru.nsu.berezin.Card)">
+<section class="detail" id="dealerOpensCard(ru.nsu.berezin.blackjack.Card)">
 <h3>dealerOpensCard</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerOpensCard</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;opened)</span>
-              throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerOpensCard</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;opened)</span></div>
 <div class="block">Called when dealer opens his closed card. Happens right after
  `dealerTurnStarted`.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>opened</code> - - card that was opened</dd>
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="cardIsDealtToDealer(ru.nsu.berezin.Card)">
+<section class="detail" id="cardIsDealtToDealer(ru.nsu.berezin.blackjack.Card)">
 <h3>cardIsDealtToDealer</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">cardIsDealtToDealer</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin">Card</a>&nbsp;dealt)</span>
-                  throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">cardIsDealtToDealer</span><wbr><span class="parameters">(<a href="Card.html" title="class in ru.nsu.berezin.blackjack">Card</a>&nbsp;dealt)</span></div>
 <div class="block">Called every time card is dealt to dealer.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dealt</code> - - card that was dealt to dealer</dd>
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="dealerTurnEnded()">
 <h3>dealerTurnEnded</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerTurnEnded</span>()
-              throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerTurnEnded</span>()</div>
 <div class="block">Called when dealer's turn ends.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="roundEnded()">
 <h3>roundEnded</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">roundEnded</span>()
-         throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">roundEnded</span>()</div>
 <div class="block">Called when round ends. `state.currentRound` is the number of the round
  that is ending.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="playerWon()">
 <h3>playerWon</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerWon</span>()
-        throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">playerWon</span>()</div>
 <div class="block">Called right after `roundEnded` if the player won.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="dealerWon()">
 <h3>dealerWon</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerWon</span>()
-        throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dealerWon</span>()</div>
 <div class="block">Called right after `roundEnded` if the dealer won.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="tie()">
 <h3>tie</h3>
-<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">tie</span>()
-  throws <span class="exceptions">E</span></div>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">tie</span>()</div>
 <div class="block">Called right after `roundEnded` if the game ended in a tie.</div>
-<dl class="notes">
-<dt>Throws:</dt>
-<dd><code>E</code> - - exception that can be thrown by the interface</dd>
-</dl>
 </section>
 </li>
 </ul>
