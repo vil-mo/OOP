@@ -1,6 +1,5 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
@@ -25,13 +24,13 @@ public class Main {
         Reader reader = new InputStreamReader(System.in);
 
         RuWriterReaderInterface inteface = new RuWriterReaderInterface(writer, reader);
-        Game<IOException> game = new Game(inteface);
+        Game game = new Game(inteface);
 
         try {
             game.run();
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             System.err.println("Ошибка IO");
-            System.err.println(e.getMessage());
+            System.err.println(e.getCause().getMessage());
         }
     }
 }

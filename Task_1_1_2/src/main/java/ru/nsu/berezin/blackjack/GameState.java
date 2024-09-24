@@ -1,4 +1,4 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
 /**
  * Stores the state of the game. It's passed to the game interface when various

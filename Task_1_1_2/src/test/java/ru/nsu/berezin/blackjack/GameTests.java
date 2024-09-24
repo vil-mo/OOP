@@ -1,4 +1,4 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
 import java.io.Reader;
 import java.io.StringReader;
@@ -12,8 +12,8 @@ class GameTests {
     void gameState() {
         GameState state = new GameState();
         Assertions.assertEquals(0, state.currentRound);
-        Assertions.assertEquals(0, state.dealer.playerHand.size());
-        Assertions.assertEquals(0, state.dealer.dealerHand.size());
+        Assertions.assertEquals(0, state.dealer.getPlayerHand().size());
+        Assertions.assertEquals(0, state.dealer.getDealerHand().size());
     }
 
     @Test
@@ -28,17 +28,17 @@ class GameTests {
                 Assertions.assertEquals(1, testInterface.roundStartedAmount);
                 Assertions.assertEquals(1, testInterface.firstHandDealtAmount);
                 Assertions.assertEquals(1, testInterface.playerTurnStartedAmount);
-                assert 
-                    testInterface.requestPlayerActionAmount - testInterface.cardIsDealtToPlayerAmount <= 1;
+                assert testInterface.requestPlayerActionAmount 
+                    - testInterface.cardIsDealtToPlayerAmount <= 1;
                 Assertions.assertEquals(1, testInterface.playerTurnEndedAmount);
                 assert testInterface.dealerTurnStartedAmount <= 1;
                 assert testInterface.dealerOpensCardAmount <= 1;
                 assert testInterface.dealerTurnEndedAmount <= 1;
                 Assertions.assertEquals(1, testInterface.roundEndedAmount);
                 Assertions.assertEquals(1,
-                        testInterface.playerWonAmount + 
-                        testInterface.dealerWonAmount + 
-                        testInterface.tieAmount
+                        testInterface.playerWonAmount 
+                        + testInterface.dealerWonAmount 
+                        + testInterface.tieAmount
                 );
             }
         }

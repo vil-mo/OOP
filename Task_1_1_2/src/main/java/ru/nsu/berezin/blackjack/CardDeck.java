@@ -1,18 +1,18 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
-import ru.nsu.berezin.Card.CardSuit;
-import ru.nsu.berezin.Card.CardValue;
+import ru.nsu.berezin.blackjack.Card.CardSuit;
+import ru.nsu.berezin.blackjack.Card.CardValue;
 
 /**
  * Represents whole deck of cards. It can store up to 52 unique cards.
  */
 public class CardDeck {
 
-    HashSet<Card> leftCards = new HashSet(52);
-    Random random = new Random();
+    private final HashSet<Card> leftCards = new HashSet(52);
+    private final Random random = new Random();
 
     /**
      * New deck filled with 52 cards.
@@ -30,6 +30,10 @@ public class CardDeck {
                 leftCards.add(new Card(value, suit));
             }
         }
+    }
+
+    public int size() {
+        return leftCards.size();
     }
 
     /**

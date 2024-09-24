@@ -1,13 +1,11 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
-import java.util.stream.IntStream;
+import java.util.List;
 
 /**
  * Game class. It's the entry point for the game.
- *
- * @param <E> - type of exception that can be thrown by the interface
  */
-public final class Game<E extends Exception> {
+public final class Game {
 
     /**
      * Actions that can be taken in a turn.
@@ -18,13 +16,13 @@ public final class Game<E extends Exception> {
          */
         DrawMore,
         /**
-         * Stop your turn and pass the turn to the dealer 
-         * (or end the game if it's a dealer) who stops.
+         * Stop your turn and pass the turn to the dealer (or end the game if
+         * it's a dealer) who stops.
          */
         Stop,
     }
 
-    GameInterface<E> gameInterface;
+    GameInterface gameInterface;
 
     /**
      * Creates a new instance of the game. All events will call the methods of
@@ -32,7 +30,7 @@ public final class Game<E extends Exception> {
      *
      * @param gameInterface - provides a way to interact with the game
      */
-    public Game(GameInterface<E> gameInterface) {
+    public Game(GameInterface gameInterface) {
         this.gameInterface = gameInterface;
     }
 
@@ -46,8 +44,8 @@ public final class Game<E extends Exception> {
         Continue,
     }
 
-    private CheckedHand checkHand(Card[] hand) {
-        int points = IntStream.of(Dealer.handPoints(hand)).sum();
+    private CheckedHand checkHand(List<Card> hand) {
+        int points = Dealer.handPoints(hand).stream().mapToInt(Integer::intValue).sum();
 
         if (points > 21) {
             return CheckedHand.Lose;
@@ -58,8 +56,8 @@ public final class Game<E extends Exception> {
         }
     }
 
-    private Action requestDealerAction(Card[] hand) {
-        int points = IntStream.of(Dealer.handPoints(hand)).sum();
+    private Action requestDealerAction(List<Card> hand) {
+        int points = Dealer.handPoints(hand).stream().mapToInt(Integer::intValue).sum();
 
         if (points < 17) {
             return Action.DrawMore;
@@ -74,9 +72,9 @@ public final class Game<E extends Exception> {
         Tie,
     }
 
-    private GameResult compareHands(Card[] player, Card[] dealer) {
-        int playerPoints = IntStream.of(Dealer.handPoints(player)).sum();
-        int dealerPoints = IntStream.of(Dealer.handPoints(dealer)).sum();
+    private GameResult compareHands(List<Card> player, List<Card> dealer) {
+        int playerPoints = Dealer.handPoints(player).stream().mapToInt(Integer::intValue).sum();
+        int dealerPoints = Dealer.handPoints(dealer).stream().mapToInt(Integer::intValue).sum();
 
         if (playerPoints > 21) {
             if (dealerPoints > 21) {
@@ -99,10 +97,8 @@ public final class Game<E extends Exception> {
 
     /**
      * Runs the game in an infinite loop.
-     *
-     * @throws E - exception that can be thrown by the interface
      */
-    public void run() throws E {
+    public void run() {
         GameState state = new GameState();
         gameInterface.setGameState(state);
         gameInterface.gameStarted();

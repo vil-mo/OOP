@@ -1,6 +1,7 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Dealer has a deck and can draw cards from the deck for player and dealer
@@ -8,10 +9,10 @@ import java.util.ArrayList;
  */
 public class Dealer {
 
-    CardDeck deck = new CardDeck();
+    private final CardDeck deck = new CardDeck();
 
-    ArrayList<Card> playerHand = new ArrayList();
-    ArrayList<Card> dealerHand = new ArrayList();
+    private final List<Card> playerHand = new ArrayList();
+    private final List<Card> dealerHand = new ArrayList();
 
     /**
      * New diller that haven't dealt any cards to anyone.
@@ -49,7 +50,7 @@ public class Dealer {
     public Card drawDealer() {
         Card drawn = deck.draw();
         if (dealerHand.isEmpty()) {
-            drawn.closed = true;
+            drawn.setClosed(true);
         }
         dealerHand.add(drawn);
         return drawn;
@@ -74,29 +75,31 @@ public class Dealer {
      */
     public Card openDealerCard() throws IndexOutOfBoundsException {
         Card card = dealerHand.get(0);
-        card.closed = false;
+        card.setClosed(false);
         return card;
     }
 
     /**
-     * Returns player's hand. This clones hand's cards.
+     * Returns player's hand.
      *
      * @return - player's hand
      */
-    public Card[] getPlayerHand() {
-        Card[] array = new Card[playerHand.size()];
-        return playerHand.toArray(array);
+    public List<Card> getPlayerHand() {
+        return playerHand;
     }
 
     /**
-     * Returns dealer's hand. This clones hand's cards. If `openDealerCard`
+     * Returns dealer's hand. If `openDealerCard`
      * wasn't called, first card will be closed.
      *
      * @return - dealer's hand
      */
-    public Card[] getDealerHand() {
-        Card[] array = new Card[dealerHand.size()];
-        return dealerHand.toArray(array);
+    public List<Card> getDealerHand() {
+        return dealerHand;
+    }
+
+    CardDeck getCardDeck() {
+        return deck;
     }
 
     /**
@@ -105,25 +108,21 @@ public class Dealer {
      * @param cards - cards to get points from
      * @return - For each card in the array, it's point value is at the same index in the array.
      */
-    public static int[] handPoints(Card[] cards) {
-        int[] points = new int[cards.length];
+    public static List<Integer> handPoints(List<Card> cards) {
+        List<Integer> points = new ArrayList(cards.size());
 
         int sum = 0;
-
-        int i = 0;
         for (Card card : cards) {
-            int cardPoints = card.value.toPointsBig();
-            points[i] = cardPoints;
+            int cardPoints = card.value.getPointsBig();
+            points.add(cardPoints);
             sum += cardPoints;
-
-            i++;
         }
 
         if (sum > 21) {
-            i = 0;
+            int i = 0;
             for (Card card : cards) {
-                int cardPoints = card.value.toPointsSmall();
-                points[i] = cardPoints;
+                int cardPoints = card.value.getPointsSmall();
+                points.set(i, cardPoints);
 
                 i++;
             }

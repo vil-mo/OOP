@@ -1,7 +1,7 @@
-package ru.nsu.berezin;
+package ru.nsu.berezin.blackjack;
 
+class TestInterface implements GameInterface {
 
-class TestInterface implements GameInterface<Exception> {
     int gameStartedAmount = 0;
     int roundStartedAmount = 0;
     int firstHandDealtAmount = 0;
@@ -17,36 +17,36 @@ class TestInterface implements GameInterface<Exception> {
     int playerWonAmount = 0;
     int dealerWonAmount = 0;
     int tieAmount = 0;
-    
+
     @Override
     public void setGameState(GameState state) {
     }
 
     @Override
-    public void gameStarted() throws Exception {
+    public void gameStarted() {
         gameStartedAmount++;
     }
 
     @Override
-    public void roundStarted() throws Exception {
+    public void roundStarted() {
         if (roundStartedAmount > 0) {
-            throw new Exception();
+            throw new RuntimeException();
         }
         roundStartedAmount++;
     }
 
     @Override
-    public void firstHandDealt() throws Exception {
+    public void firstHandDealt() {
         firstHandDealtAmount++;
     }
 
     @Override
-    public void playerTurnStarted() throws Exception {
+    public void playerTurnStarted() {
         playerTurnStartedAmount++;
     }
 
     @Override
-    public Game.Action requestPlayerAction() throws Exception {
+    public Game.Action requestPlayerAction() {
         requestPlayerActionAmount++;
         if (requestPlayerActionAmount < 2) {
             return Game.Action.DrawMore;
@@ -56,52 +56,52 @@ class TestInterface implements GameInterface<Exception> {
     }
 
     @Override
-    public void cardIsDealtToPlayer(Card dealt) throws Exception {
+    public void cardIsDealtToPlayer(Card dealt) {
         cardIsDealtToPlayerAmount++;
     }
 
     @Override
-    public void playerTurnEnded() throws Exception {
+    public void playerTurnEnded() {
         playerTurnEndedAmount++;
     }
 
     @Override
-    public void dealerTurnStarted() throws Exception {
+    public void dealerTurnStarted() {
         dealerTurnStartedAmount++;
     }
 
     @Override
-    public void dealerOpensCard(Card opened) throws Exception {
+    public void dealerOpensCard(Card opened) {
         dealerOpensCardAmount++;
     }
 
     @Override
-    public void cardIsDealtToDealer(Card dealt) throws Exception {
+    public void cardIsDealtToDealer(Card dealt) {
         cardIsDealtToDealerAmount++;
     }
 
     @Override
-    public void dealerTurnEnded() throws Exception {
+    public void dealerTurnEnded() {
         dealerTurnEndedAmount++;
     }
 
     @Override
-    public void roundEnded() throws Exception {
+    public void roundEnded() {
         roundEndedAmount++;
     }
 
     @Override
-    public void playerWon() throws Exception {
+    public void playerWon() {
         playerWonAmount++;
     }
 
     @Override
-    public void dealerWon() throws Exception {
+    public void dealerWon() {
         dealerWonAmount++;
     }
 
     @Override
-    public void tie() throws Exception {
+    public void tie() {
         tieAmount++;
     }
 }
