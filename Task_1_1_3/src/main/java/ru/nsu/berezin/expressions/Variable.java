@@ -26,7 +26,7 @@ public class Variable extends Expression {
         if (variable.equals(name)) {
             return new Number(1);
         }
-        return new Variable(name);
+        return new Number(0);
     }
 
     @Override

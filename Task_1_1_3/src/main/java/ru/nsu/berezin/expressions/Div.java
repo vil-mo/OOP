@@ -28,7 +28,7 @@ public class Div extends Expression {
     public Expression derivative(String variable) {
         return new Div(
                 new Sub(
-                        new Mul(left.derivative(variable), left),
+                        new Mul(left.derivative(variable), right),
                         new Mul(left, right.derivative(variable)
                         )
                 ), new Mul(right, right));

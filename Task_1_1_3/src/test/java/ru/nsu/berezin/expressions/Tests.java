@@ -1,9 +1,9 @@
 package ru.nsu.berezin.expressions;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.StringReader;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Tests {
 
@@ -118,5 +118,35 @@ public class Tests {
         String stringExpression = "((x * 4.0) + ((y - z) - (6 * 0.5)))";
         Expression expr = Expression.parse(new StringReader(stringExpression));
         assertEquals(2.0, expr.eval("x = 3; y = 1;z=   8"));
+    }
+
+    @Test
+    public void testDerivative() {
+        String stringExpression = "(x + 6)";
+        Expression expr = Expression.parse(new StringReader(stringExpression));
+        Expression derivative = expr.derivative("x");
+        assertEquals(1, derivative.eval("x=10"));
+    }
+
+    @Test
+    public void testDerivative2() {
+        String stringExpression = "(x * 3)";
+        Expression expr = Expression.parse(new StringReader(stringExpression));
+        assertEquals(3, expr.derivative("x").eval("x=10"));
+    }
+
+    @Test
+    public void testDerivative3() {
+        String stringExpression = "(x / 3)";
+        Expression expr = Expression.parse(new StringReader(stringExpression));
+        assertEquals(1.0 / 3.0, expr.derivative("x").eval("x=10"));
+    }
+
+    @Test
+    void testDerivative4() {
+        String stringExpression = "((((8 * x) * x) - 3) / (y * 4))";
+        Expression expr = Expression.parse(new StringReader(stringExpression));
+        System.out.println(expr.derivative("x").print());
+        assertEquals(10, expr.derivative("x").eval("x=10; y = 4"));
     }
 }
