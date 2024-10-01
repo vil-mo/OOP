@@ -1,9 +1,9 @@
 package ru.nsu.berezin.expressions;
 
-import org.junit.jupiter.api.Test;
-import java.io.StringReader;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.StringReader;
+import org.junit.jupiter.api.Test;
 
 public class Tests {
 

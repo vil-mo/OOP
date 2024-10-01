@@ -1,9 +1,10 @@
 package ru.nsu.berezin.expressions;
 
-/// Expression that represents an equation.
-
 import java.io.Reader;
 
+/**
+ * Expression class that can have any number of variables.
+ */
 public abstract class Expression {
     /**
      * Parses expression from string.
@@ -37,7 +38,7 @@ public abstract class Expression {
      * @param denoting String that has the form of "x = 1; y = 2"
      * @return Value of expression
      * @throws IllegalArgumentException if at least one variable is not found in
-     * denoting or incorrect denoting format is passed
+     *     denoting or incorrect denoting format is passed
      */
     public abstract double eval(String denoting) throws IllegalArgumentException;
 }
