@@ -2,7 +2,7 @@ package ru.nsu.berezin.expressions;
 
 /**
  * Expression that represents a variable.
- * Variable is any string of characters that doesn't .
+ * Variable is any string of characters in english alphabet.
  */
 public class Variable extends Expression {
     private final String name;
@@ -39,10 +39,6 @@ public class Variable extends Expression {
             }
 
             String varName = split2[0].strip();
-
-            if (varName.isEmpty() || varName.startsWith("(") || varName.matches("\\d(.)*")) {
-                throw new IllegalArgumentException("Incorrect denoting format. Expected format: x = 1; y = 2");
-            }
 
             if (varName.equals(name)) {
                 try {
