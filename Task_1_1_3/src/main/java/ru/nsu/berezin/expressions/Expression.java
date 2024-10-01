@@ -36,6 +36,7 @@ public abstract class Expression {
      * 
      * @param denoting String that has the form of "x = 1; y = 2"
      * @return Value of expression
+     * @throws IllegalArgumentException if at least one variable is not found in denoting or incorrect denoting format is passed
      */
-    public abstract double eval(String denoting);
+    public abstract double eval(String denoting) throws IllegalArgumentException;
 }
