@@ -45,6 +45,18 @@ public class ExpressionParser {
 
                         return new Add(left, right);
                     }
+                    if (next == '-') {
+                        Expression right = parse(expression);
+                        if (right == null) {
+                            return null;
+                        }
+                        char next2 = getNext(expression);
+                        if (next2 != ')') {
+                            return null;
+                        }
+                        putBack(next2);
+                        return new Sub(left, right);
+                    }
                     return null;
                 }
                 if (Character.isLetter(c)) {
