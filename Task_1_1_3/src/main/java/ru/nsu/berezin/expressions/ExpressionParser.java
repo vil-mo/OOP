@@ -10,11 +10,9 @@ public class ExpressionParser {
 
     int toPutBack = -1;
 
-
-
     /**
      * Parses expression from reader.
-     * 
+     *
      * @param expression Expression to parse
      * @return Null if sequence is not a valid expression.
      */
@@ -57,6 +55,30 @@ public class ExpressionParser {
                         putBack(next2);
                         return new Sub(left, right);
                     }
+                    if (next == '*') {
+                        Expression right = parse(expression);
+                        if (right == null) {
+                            return null;
+                        }
+                        char next2 = getNext(expression);
+                        if (next2 != ')') {
+                            return null;
+                        }
+                        putBack(next2);
+                        return new Mul(left, right);
+                    }
+                    if (next == '/') {
+                        Expression right = parse(expression);
+                        if (right == null) {
+                            return null;
+                        }
+                        char next2 = getNext(expression);
+                        if (next2 != ')') {
+                            return null;
+                        }
+                        putBack(next2);
+                        return new Div(left, right);
+                    }
                     return null;
                 }
                 if (Character.isLetter(c)) {
@@ -94,7 +116,7 @@ public class ExpressionParser {
     }
 
     private void putBack(char c) {
-        this.toPutBack = (int)c;
+        this.toPutBack = (int) c;
     }
 
     private char getNext(Reader expression) throws IOException {
