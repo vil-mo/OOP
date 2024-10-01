@@ -34,13 +34,10 @@ public class ExpressionParser {
                         if (right == null) {
                             return null;
                         }
-
                         char next2 = getNext(expression);
                         if (next2 != ')') {
                             return null;
                         }
-                        putBack(next2);
-
                         return new Add(left, right);
                     }
                     if (next == '-') {
@@ -52,7 +49,6 @@ public class ExpressionParser {
                         if (next2 != ')') {
                             return null;
                         }
-                        putBack(next2);
                         return new Sub(left, right);
                     }
                     if (next == '*') {
@@ -64,7 +60,6 @@ public class ExpressionParser {
                         if (next2 != ')') {
                             return null;
                         }
-                        putBack(next2);
                         return new Mul(left, right);
                     }
                     if (next == '/') {
@@ -76,7 +71,6 @@ public class ExpressionParser {
                         if (next2 != ')') {
                             return null;
                         }
-                        putBack(next2);
                         return new Div(left, right);
                     }
                     return null;
@@ -107,6 +101,8 @@ public class ExpressionParser {
                     putBack(c);
                     return new Number(Double.parseDouble(sb.toString()));
                 }
+
+                return null;
             }
         } catch (IOException e) {
             return null;
