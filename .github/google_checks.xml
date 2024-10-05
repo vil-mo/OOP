@@ -44,7 +44,7 @@
 
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
-    <property name="max" value="100"/>
+    <property name="max" value="300"/>
     <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
   </module>
 
@@ -135,7 +135,10 @@
     <module name="OneStatementPerLine"/>
     <module name="MultipleVariableDeclarations"/>
     <module name="ArrayTypeStyle"/>
-    <module name="MissingSwitchDefault"/>
+    <!--
+      <module name="MissingSwitchDefault"/>
+      For some reason it triggers even if pattern is exhaustive.
+    -->
     <module name="FallThrough"/>
     <module name="UpperEll"/>
     <module name="ModifierOrder"/>
@@ -321,7 +324,12 @@
                value="^@return the *|^This method returns |^A [{]@code [a-zA-Z0-9]+[}]( is a )"/>
     </module>
     <module name="JavadocParagraph"/>
-    <module name="RequireEmptyLineBeforeBlockTagGroup"/>
+    <!-- 
+      <module name="RequireEmptyLineBeforeBlockTagGroup"/> 
+      Removing check, because whitespace considered non empty line.
+      My IDE automatically adds whitespace when I press enter in doc comments.
+      This is really annoying and there seems to be no way to configure this.
+    -->
     <module name="AtclauseOrder">
       <property name="tagOrder" value="@param, @return, @throws, @deprecated"/>
       <property name="target"
