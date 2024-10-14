@@ -1,6 +1,6 @@
 package ru.nsu.berezin.expressions;
 
-import java.io.Reader;
+import java.text.ParseException;
 
 /**
  * Expression class that can have any number of variables.
@@ -10,11 +10,12 @@ public abstract class Expression {
      * Parses expression from string.
      *
      * @param expression String to parse
-     * @return Null if string is not a valid expression.
+     * @return Parsed expression
+     * @throws ParseException if expression is not valid
      */
-    public static Expression parse(Reader expression) {
-        ExpressionParser parser = new ExpressionParser();
-        return parser.parse(expression);
+    public static Expression parse(String expression) throws ParseException {
+        ExpressionParser parser = new ExpressionParser(expression);
+        return parser.parse();
     }
 
     /**

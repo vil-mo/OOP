@@ -1,131 +1,127 @@
 package ru.nsu.berezin.expressions;
 
-import java.io.IOException;
-import java.io.Reader;
+import java.text.ParseException;
 
 /**
  * Parser for expressions.
  */
 public class ExpressionParser {
 
-    int toPutBack = -1;
+    private final String expression;
+    private int currentChar = 0;
 
     /**
-     * Parses expression from reader.
+     * Creates a new expression parser.
      *
      * @param expression Expression to parse
-     * @return Null if sequence is not a valid expression.
      */
-    public Expression parse(Reader expression) {
-        try {
-            while (expression.ready()) {
-                char c = getNext(expression);
-
-                if (c == '(') {
-                    Expression left = parse(expression);
-                    if (left == null) {
-                        return null;
-                    }
-
-                    char next = getNext(expression);
-
-                    if (next == '+') {
-                        Expression right = parse(expression);
-                        if (right == null) {
-                            return null;
-                        }
-                        char next2 = getNext(expression);
-                        if (next2 != ')') {
-                            return null;
-                        }
-                        return new Add(left, right);
-                    }
-                    if (next == '-') {
-                        Expression right = parse(expression);
-                        if (right == null) {
-                            return null;
-                        }
-                        char next2 = getNext(expression);
-                        if (next2 != ')') {
-                            return null;
-                        }
-                        return new Sub(left, right);
-                    }
-                    if (next == '*') {
-                        Expression right = parse(expression);
-                        if (right == null) {
-                            return null;
-                        }
-                        char next2 = getNext(expression);
-                        if (next2 != ')') {
-                            return null;
-                        }
-                        return new Mul(left, right);
-                    }
-                    if (next == '/') {
-                        Expression right = parse(expression);
-                        if (right == null) {
-                            return null;
-                        }
-                        char next2 = getNext(expression);
-                        if (next2 != ')') {
-                            return null;
-                        }
-                        return new Div(left, right);
-                    }
-                    return null;
-                }
-                if (Character.isLetter(c)) {
-                    StringBuilder sb = new StringBuilder();
-                    while (Character.isLetter(c)) {
-                        sb.append(c);
-                        c = (char) expression.read();
-                    }
-                    putBack(c);
-                    return new Variable(sb.toString());
-                }
-                if (Character.isDigit(c)) {
-                    StringBuilder sb = new StringBuilder();
-                    while (Character.isDigit(c)) {
-                        sb.append(c);
-                        c = (char) expression.read();
-                    }
-                    if (c == '.') {
-                        sb.append(c);
-                        c = (char) expression.read();
-                        while (Character.isDigit(c)) {
-                            sb.append(c);
-                            c = (char) expression.read();
-                        }
-                    }
-                    putBack(c);
-                    return new Number(Double.parseDouble(sb.toString()));
-                }
-
-                return null;
-            }
-        } catch (IOException e) {
-            return null;
-        }
-
-        return null;
+    public ExpressionParser(String expression) {
+        this.expression = expression;
     }
 
-    private void putBack(char c) {
-        this.toPutBack = (int) c;
-    }
-
-    private char getNext(Reader expression) throws IOException {
+    /**
+     * Parses given expression.
+     *
+     * @return Parsed expression
+     * @throws ParseException if expression is not valid
+     */
+    public Expression parse() throws ParseException {
         char c;
-        if (toPutBack != -1) {
-            c = (char) toPutBack;
-            toPutBack = -1;
-        } else {
-            c = (char) expression.read();
+        c = getNext();
+
+        if (c == '(') {
+            Expression left = parse();
+
+            char operation = getNext();
+            Expression right = parse();
+
+            char closingBracket = getNext();
+            if (closingBracket != ')') {
+                throw new ParseException("Unexpected character '" + closingBracket + "', expected ')'", currentChar);
+            }
+
+            return switch (operation) {
+                case '+' ->
+                    new Add(left, right);
+                case '-' ->
+                    new Sub(left, right);
+                case '*' ->
+                    new Mul(left, right);
+                case '/' ->
+                    new Div(left, right);
+
+                default ->
+                    throw new ParseException("Illegal operation '" + operation + "'", currentChar);
+            };
+        }
+        if (Character.isLetter(c)) {
+            StringBuilder sb = new StringBuilder();
+            currentChar--;
+
+            while (Character.isLetter(c)) {
+                currentChar++;
+                sb.append(c);
+                if (currentChar >= expression.length()) {
+                    break;
+                }
+                c = expression.charAt(currentChar);
+            }
+            return new Variable(sb.toString());
+        }
+        if (Character.isDigit(c)) {
+            StringBuilder sb = new StringBuilder();
+            currentChar--;
+
+            while (Character.isDigit(c)) {
+                currentChar++;
+                sb.append(c);
+                if (currentChar >= expression.length()) {
+                    break;
+                }
+                c = expression.charAt(currentChar);
+            }
+            if (c == '.') {
+                currentChar++;
+                sb.append(c);
+
+                if (currentChar < expression.length()) {
+                    c = expression.charAt(currentChar);   
+                }
+                while (Character.isDigit(c)) {
+                    currentChar++;
+                    sb.append(c);
+                    if (currentChar >= expression.length()) {
+                        break;
+                    }
+                    c = expression.charAt(currentChar);
+                }
+            }
+            return new Number(Double.parseDouble(sb.toString()));
         }
 
-        while (Character.isWhitespace(c)) {
-            c = (char) expression.read();
+        throw new ParseException("Unexpected character", currentChar);
+    }
+
+    /**
+     * Returns operation character in the given string, skipping whitespaces.
+     *
+     * @return Next character
+     * @throws IndexOutOfBoundsException if there is no more characters in the
+     * string
+     */
+    private char getNext() throws ParseException {
+        char c;
+
+        try {
+            c = expression.charAt(currentChar);
+            currentChar++;
+
+            while (Character.isWhitespace(c)) {
+                c = expression.charAt(currentChar);
+                currentChar++;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            throw new ParseException("Unexpected end of expression", currentChar);
         }
         return c;
     }

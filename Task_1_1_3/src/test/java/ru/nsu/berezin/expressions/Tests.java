@@ -1,8 +1,9 @@
 package ru.nsu.berezin.expressions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.text.ParseException;
 
-import java.io.StringReader;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class Tests {
@@ -10,71 +11,106 @@ public class Tests {
     @Test
     public void parseAndPrint() {
         String stringExpression = "(x + y)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(stringExpression, expr.print());
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(stringExpression, expr.print());
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void parseAndPrint2() {
         String stringExpression = "((x + y) + z)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(stringExpression, expr.print());
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(stringExpression, expr.print());
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void parseAndPrint3() {
         String stringExpression = "(0.1 + (4.0 * 1.0))";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(stringExpression, expr.print());
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(stringExpression, expr.print());
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     void parseAndPrint4() {
         String stringExpression = "((x / 4.0) + ((y * z) - (5.3 * 1.1)))";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(stringExpression, expr.print());
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(stringExpression, expr.print());
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void parseAndPrint5() {
         String stringExpression = "1.";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals("1.0", expr.print());
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(stringExpression, expr.print());
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void parseIncorrect() {
         String stringExpression = "+(x + y) / 3";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(null, expr);
+        try {
+            Expression.parse(stringExpression);
+            fail("Parsed invalid expression");
+        } catch (ParseException e) {
+        }
     }
 
     @Test
     public void parseIncorrect2() {
         String stringExpression = "(x + y";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(null, expr);
+        try {
+            Expression.parse(stringExpression);
+            fail("Parsed invalid expression");
+        } catch (ParseException e) {
+        }
     }
 
     @Test
     public void parseIncorrect3() {
         String stringExpression = "(x + y + z)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(null, expr);
+        try {
+            Expression.parse(stringExpression);
+            fail("Parsed invalid expression");
+        } catch (ParseException e) {
+        }
     }
 
     @Test
     public void testIncorrect4() {
         String stringExpression = "%a";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(null, expr);
+        try {
+            Expression.parse(stringExpression);
+            fail("Parsed invalid expression");
+        } catch (ParseException e) {
+        }
     }
 
     @Test
     public void testIncorrect5() {
         String stringExpression = ".4";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(null, expr);
+        try {
+            Expression.parse(stringExpression);
+            fail("Parsed invalid expression");
+        } catch (ParseException e) {
+        }
     }
 
     @Test
@@ -116,37 +152,56 @@ public class Tests {
     @Test
     public void evalComplexExpression() {
         String stringExpression = "((x * 4.0) + ((y - z) - (6 * 0.5)))";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(2.0, expr.eval("x = 3; y = 1;z=   8"));
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(2.0, expr.eval("x = 3; y = 1;z=   8"));
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void testDerivative() {
         String stringExpression = "(x + 6)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        Expression derivative = expr.derivative("x");
-        assertEquals(1, derivative.eval("x=10"));
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            Expression derivative = expr.derivative("x");
+            assertEquals(1, derivative.eval("x=10"));
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void testDerivative2() {
         String stringExpression = "(x * 3)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(3, expr.derivative("x").eval("x=10"));
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(3, expr.derivative("x").eval("x=10"));
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     public void testDerivative3() {
         String stringExpression = "(x / 3)";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        assertEquals(1.0 / 3.0, expr.derivative("x").eval("x=10"));
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(1.0 / 3.0, expr.derivative("x").eval("x=10"));
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 
     @Test
     void testDerivative4() {
         String stringExpression = "((((8 * x) * x) - 3) / (y * 4))";
-        Expression expr = Expression.parse(new StringReader(stringExpression));
-        System.out.println(expr.derivative("x").print());
-        assertEquals(10, expr.derivative("x").eval("x=10; y = 4"));
+        try {
+            Expression expr = Expression.parse(stringExpression);
+            assertEquals(10, expr.derivative("x").eval("x=10; y = 4"));
+        } catch (ParseException e) {
+            fail("Failed to parse valid expression");
+        }
     }
 }
