@@ -79,7 +79,7 @@ class Tests {
         try {
             Expression.parse(stringExpression);
             fail("Parsed invalid expression");
-        } catch (ParseException ignoredException) {
+        } catch (ParseException ignored) {
         }
     }
 
@@ -89,7 +89,7 @@ class Tests {
         try {
             Expression.parse(stringExpression);
             fail("Parsed invalid expression");
-        } catch (ParseException ignore) {
+        } catch (ParseException ignored) {
         }
     }
 
@@ -99,7 +99,7 @@ class Tests {
         try {
             Expression.parse(stringExpression);
             fail("Parsed invalid expression");
-        } catch (ParseException ignoredException) {
+        } catch (ParseException ignored) {
         }
     }
 
@@ -109,7 +109,7 @@ class Tests {
         try {
             Expression.parse(stringExpression);
             fail("Parsed invalid expression");
-        } catch (ParseException ignore) {
+        } catch (ParseException ignored) {
         }
     }
 
