@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public abstract class Heapsort {
 
-    static private void heapify(int[] buf, int i, int size) {
+    private static void heapify(int[] buf, int i, int size) {
         int l = 2 * i + 1;
         int r = 2 * i + 2;
 
