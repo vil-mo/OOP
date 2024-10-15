@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-public class MatrixGraph<T extends Object> implements Graph<T, Integer> {
+public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     private final boolean[] edges;
     private final Object[] nodes;
@@ -15,7 +15,7 @@ public class MatrixGraph<T extends Object> implements Graph<T, Integer> {
      *
      * @param maxNodesAmount Maximum amount of nodes in the graph
      */
-    public MatrixGraph(int maxNodesAmount) {
+    public AdjMatrixGraph(int maxNodesAmount) {
         edges = new boolean[maxNodesAmount * maxNodesAmount];
         nodes = new Object[maxNodesAmount];
     }

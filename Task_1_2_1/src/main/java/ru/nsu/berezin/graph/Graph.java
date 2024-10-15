@@ -9,7 +9,6 @@ import java.util.Optional;
  *
  * @param <T> Type of data stored in nodes
  * @param <NodeIndex> Type of index for nodes
- * @param <EdgeIndex> Type of index for edges
  */
 public interface Graph<T, NodeIndex> {
 

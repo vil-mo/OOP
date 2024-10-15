@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public abstract class TopologicalSort {
+/**
+ * Class that contains algorithms that are applied to `Graph`s.
+ */
+public abstract class GraphAlgorithms {
 
     private static <T, NodeIndex> void topSortRecursion(
             Graph<T, NodeIndex> graph,
@@ -31,8 +34,8 @@ public abstract class TopologicalSort {
      * @return List of nodes in topological order.
      */
     public static <T, NodeIndex> List<NodeIndex> topologicalSort(Graph<T, NodeIndex> graph) {
-        List<NodeIndex> result = new ArrayList();
-        HashSet<NodeIndex> visited = new HashSet();
+        List<NodeIndex> result = new ArrayList<>();
+        HashSet<NodeIndex> visited = new HashSet<>();
 
         for (NodeIndex node : graph.nodes()) {
             topSortRecursion(graph, node, visited, result);
