@@ -1,5 +1,7 @@
 package ru.nsu.berezin;
 
+import java.util.Random;
+
 /**
  * Class that has method for heapsort.
  */
@@ -48,11 +50,28 @@ public abstract class Heapsort {
     }
 
     /**
-     * Made to be able to run script.
-     *
+     * Does benchark.
      *
      * @param args - Main args.
      */
     public static void main(String[] args) {
+        long sum = 0;
+        Random random = new Random();
+        for (int k = 1; k <= 10; k++) {
+            for (int j = 1; j <= 1000; j++) {
+
+                int[] array = new int[1000 * k];
+
+                for (int i = 0; i < 1000 * k; i++) {
+                    array[i] = random.nextInt();
+                }
+
+                long startTime = System.nanoTime();
+                heapsort(array);
+                long endTime = System.nanoTime();
+                sum += endTime - startTime;
+            }
+            System.out.print(k + "000 elements: " + sum / 1000 + "\n");
+        }
     }
 }
