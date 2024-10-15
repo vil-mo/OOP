@@ -58,34 +58,37 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     @Override
     public Iterable<Integer> nodes() {
-        return () -> new Iterator<Integer>() {
-            int i = 0;
+        return () -> {
+            var iterator = new Iterator<Integer>() {
+                int i = 0;
 
-            private void toNonNull() {
-                while (i < nodes.length && nodes[i] == null) {
-                    i++;
+                void toNonNull() {
+                    while (i < nodes.length && nodes[i] == null) {
+                        i++;
+                    }
                 }
-            }
 
-            @Override
-            public boolean hasNext() {
-                toNonNull();
-                return i < nodes.length;
-            }
+                @Override
+                public boolean hasNext() {
+                    toNonNull();
+                    return i < nodes.length;
+                }
 
-            @Override
-            public Integer next() {
-                toNonNull();
-                return i;
-            }
+                @Override
+                public Integer next() {
+                    int result = i;
+                    toNonNull();
+                    return result;
+                }
+            };
+            iterator.toNonNull();
+            return iterator;
         };
     }
 
     @Override
-    public boolean addEdge(Integer from, Integer to) {
-        boolean result = edges[from * nodes.length + to];
+    public void addEdge(Integer from, Integer to) {
         edges[from * nodes.length + to] = true;
-        return result;
     }
 
     @Override

@@ -52,10 +52,8 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if the graph already contained an edge between two nodes,
-     *     false otherwise.
      */
-    public boolean addEdge(NodeIndex from, NodeIndex to);
+    public void addEdge(NodeIndex from, NodeIndex to);
 
     /**
      * Returns true if the graph contains an edge between two nodes.
@@ -63,17 +61,18 @@ public interface Graph<T, NodeIndex> {
      * @param from Edge from this node
      * @param to Edge to this node
      * @return True if the graph already contained an edge between two nodes,
-     * false otherwise.
+     *     false otherwise.
      */
     public boolean hasEdge(NodeIndex from, NodeIndex to);
 
     /**
-     * Removes an edge from the graph.
+     * Removes a single edge from the graph. Does nothing if edge does not
+     * exist.
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if the graph already contained an edge between two nodes,
-     * false otherwise.
+     * @return True if the graph did contain edge between two nodes before
+     *     removal, false otherwise.
      */
     public boolean removeEdge(NodeIndex from, NodeIndex to);
 
