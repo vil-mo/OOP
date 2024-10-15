@@ -1,10 +1,12 @@
 package ru.nsu.berezin.expressions;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import java.text.ParseException;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-public class Tests {
+class Tests {
 
     @Test
     public void parseAndPrint() {

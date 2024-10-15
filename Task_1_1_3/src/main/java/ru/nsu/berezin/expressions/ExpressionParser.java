@@ -107,7 +107,7 @@ public class ExpressionParser {
      *
      * @return Next character
      * @throws IndexOutOfBoundsException if there is no more characters in the
-     * string
+     *     string
      */
     private char getNext() throws ParseException {
         char c;
