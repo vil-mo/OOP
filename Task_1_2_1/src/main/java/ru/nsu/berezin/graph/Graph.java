@@ -1,7 +1,5 @@
 package ru.nsu.berezin.graph;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,33 +82,4 @@ public interface Graph<T, NodeIndex> {
      */
     public List<NodeIndex> neighbors(NodeIndex id);
 
-    private void topSortRec(NodeIndex node, HashSet<NodeIndex> visited, List<NodeIndex> result) {
-        if (visited.contains(node)) {
-            return;
-        }
-        visited.add(node);
-
-        for (NodeIndex neighbor : neighbors(node)) {
-            topSortRec(neighbor, visited, result);
-        }
-
-        result.add(node);
-    }
-
-    /**
-     * Performs topological sort of the graph. Nodes are listed from the one
-     * with minimum outgoing edges to the one with maximum outgoing edges.
-     *
-     * @return List of nodes in topological order.
-     */
-    public default List<NodeIndex> topSort() {
-        List<NodeIndex> result = new ArrayList();
-        HashSet<NodeIndex> visited = new HashSet();
-
-        for (NodeIndex node : nodes()) {
-            topSortRec(node, visited, result);
-        }
-
-        return result;
-    }
 }
