@@ -1,9 +1,7 @@
 package ru.nsu.berezin.expressions;
 
 import java.text.ParseException;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 public class Tests {
@@ -57,7 +55,7 @@ public class Tests {
         String stringExpression = "1.";
         try {
             Expression expr = Expression.parse(stringExpression);
-            assertEquals(stringExpression, expr.print());
+            assertEquals("1.0", expr.print());
         } catch (ParseException e) {
             fail("Failed to parse valid expression");
         }
