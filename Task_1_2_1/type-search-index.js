@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.berezin.graph","l":"AdjListGraph"},{"p":"ru.nsu.berezin.graph","l":"AdjMatrixGraph"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.berezin.graph","l":"Graph"},{"p":"ru.nsu.berezin.graph","l":"GraphAlgorithms"}];updateSearchResults();
