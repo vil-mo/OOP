@@ -19,8 +19,8 @@ public class Add extends Expression {
     }
 
     @Override
-    public String print() {
-        return "(" + left.print() + " + " + right.print() + ")";
+    public String toString() {
+        return "(" + left.toString() + " + " + right.toString() + ")";
     }
 
     @Override

@@ -23,7 +23,9 @@ public abstract class Expression {
      *
      * @return String representation of expression
      */
-    public abstract String print();
+    public String print() {
+        return toString();
+    }
 
     /**
      * Returns derivative of expression with respect to variable.

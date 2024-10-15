@@ -16,7 +16,7 @@ public class Number extends Expression {
     }
 
     @Override
-    public String print() {
+    public String toString() {
         return Double.toString(value);
     }
 
