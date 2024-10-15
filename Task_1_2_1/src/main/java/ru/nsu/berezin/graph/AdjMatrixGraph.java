@@ -3,7 +3,6 @@ package ru.nsu.berezin.graph;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
@@ -41,21 +40,20 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     }
 
     @Override
-    public Optional<T> getNode(Integer id) {
-        if (id < 0 || id >= nodes.length) {
-            return Optional.empty();
-        }
-        return Optional.ofNullable((T) nodes[id]);
+    public T getNode(Integer id) {
+        return (T) nodes[id];
     }
 
     @Override
-    public Optional<T> removeNode(Integer id) {
-        if (id < 0 || id >= nodes.length) {
-            return Optional.empty();
+    public T removeNode(Integer id) {
+        for (int i = 0; i < nodes.length; i++) {
+            edges[id * nodes.length + i] = false;
+            edges[i * nodes.length + id] = false;
         }
+
         T data = (T) nodes[id];
         nodes[id] = null;
-        return Optional.ofNullable(data);
+        return data;
     }
 
     @Override
@@ -85,37 +83,18 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     @Override
     public boolean addEdge(Integer from, Integer to) {
-        if (from < 0 || from >= nodes.length) {
-            return false;
-        }
-        if (to < 0 || to >= nodes.length) {
-            return false;
-        }
-
+        boolean result = edges[from * nodes.length + to];
         edges[from * nodes.length + to] = true;
-        return true;
+        return result;
     }
 
     @Override
     public boolean hasEdge(Integer from, Integer to) {
-        if (from < 0 || from >= nodes.length) {
-            return false;
-        }
-        if (to < 0 || to >= nodes.length) {
-            return false;
-        }
-
         return edges[from * nodes.length + to];
     }
 
     @Override
     public boolean removeEdge(Integer from, Integer to) {
-        if (from < 0 || from >= nodes.length) {
-            return false;
-        }
-        if (to < 0 || to >= nodes.length) {
-            return false;
-        }
         boolean result = edges[from * nodes.length + to];
         edges[from * nodes.length + to] = false;
         return result;
@@ -123,10 +102,6 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     @Override
     public List<Integer> neighbors(Integer id) {
-        if (id < 0 || id >= nodes.length) {
-            return List.of();
-        }
-
         List<Integer> result = new ArrayList();
         for (int i = 0; i < nodes.length; i++) {
             if (edges[id * nodes.length + i]) {

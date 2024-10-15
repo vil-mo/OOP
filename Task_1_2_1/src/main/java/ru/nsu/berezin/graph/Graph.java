@@ -1,7 +1,6 @@
 package ru.nsu.berezin.graph;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Collection of nodes connected by edges. Each node can store a data. Nodes and
@@ -25,17 +24,21 @@ public interface Graph<T, NodeIndex> {
      * Returns data of a node.
      *
      * @param id Index of the node
-     * @return Data of the node. Empty if node was not found in the graph.
+     * @return Data of the node.
      */
-    public Optional<T> getNode(NodeIndex id);
+    public T getNode(NodeIndex id);
 
     /**
-     * Removes a node from the graph.
+     * Removes a node from the graph. All edges connected to the node will be
+     * removed as well. Node index would be invalid after this operation and
+     * sholud not be used. If invalid index used, methods that were invoked may
+     * or may not return invalid result and may or may not throw an undocumented
+     * exception.
      *
      * @param id Index of the node to remove
      * @return Data of removed node. Empty if node was not found in the graph.
      */
-    public Optional<T> removeNode(NodeIndex id);
+    public T removeNode(NodeIndex id);
 
     /**
      * Iterates over all nodes in the graph.
@@ -49,7 +52,8 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return False if one of the nodes was not found in graph.
+     * @return True if the graph already contained an edge between two nodes,
+     *     false otherwise.
      */
     public boolean addEdge(NodeIndex from, NodeIndex to);
 
@@ -58,8 +62,8 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if the graph contains an edge between two nodes, false
-     * otherwise.
+     * @return True if the graph already contained an edge between two nodes,
+     * false otherwise.
      */
     public boolean hasEdge(NodeIndex from, NodeIndex to);
 
@@ -68,8 +72,8 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if edge was removed, false if edge was not found in the
-     * graph
+     * @return True if the graph already contained an edge between two nodes,
+     * false otherwise.
      */
     public boolean removeEdge(NodeIndex from, NodeIndex to);
 
