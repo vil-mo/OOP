@@ -47,7 +47,7 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     @Override
     public T removeNode(Integer id) {
-        for (int i = 0; i < nodes.length; i++) { 
+        for (int i = 0; i < nodes.length; i++) {
             edges[id * nodes.length + i] = Optional.empty();
             edges[i * nodes.length + id] = Optional.empty();
         }
@@ -113,4 +113,9 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
         }
         return result;
     }
+
+    public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
+        return new AdjMatrixGraph(amount);
+    }
+
 }

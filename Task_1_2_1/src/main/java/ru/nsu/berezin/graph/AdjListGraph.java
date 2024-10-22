@@ -126,4 +126,8 @@ public class AdjListGraph<T> implements Graph<T, Integer> {
         return list;
     }
 
+
+    public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
+        return new AdjListGraph();
+    }
 }
