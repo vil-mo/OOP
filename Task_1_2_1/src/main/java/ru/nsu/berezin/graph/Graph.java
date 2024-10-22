@@ -84,4 +84,14 @@ public interface Graph<T, NodeIndex> {
      */
     public List<NodeIndex> neighbors(NodeIndex id);
 
+    /**
+     * Returns this graph with enouth memory to hold amount nodes.
+     * No nodes have been inserted in the graph yet.
+     * It is safe to cast resulting type to the type of graph.
+     * 
+     * @param amount resulting graph has enough capasity to hold this many nodes.
+     */
+    public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
+        throw new UnsupportedOperationException();
+    }
 }
