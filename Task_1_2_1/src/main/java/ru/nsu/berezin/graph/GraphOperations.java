@@ -58,11 +58,14 @@ public abstract class GraphOperations {
      * data_1
      * data_2
      * ...
-     * node_1 node_2
-     * node_3 node_4
+     * from_node_1 to_node_1 weight_1 
+     * from_node_2 to_node_2 weight_2
      * ...
-     * </pre> First line contains number of nodes and number of edges in the
+     * </pre> 
+     * First line contains number of nodes and number of edges in the
      * graph. Then for number of nodes lines, there is a data for each node,
+     * then for number of edges lines, there is a from node and to node a weight for each
+     * edge.
      *
      * @param path Path to file
      * @return Loaded graph
@@ -99,13 +102,14 @@ public abstract class GraphOperations {
 
         for (int i = 0; i < edgesAmount; i++) {
             String[] edge = scanner.nextLine().split(" ");
-            if (edge.length != 2) {
-                throw new ParseException("Edge must contain two numbers", i + nodesAmount + 1);
+            if (edge.length != 3) {
+                throw new ParseException("Edge must contain three numbers", i + nodesAmount + 1);
             }
             try {
                 int from = Integer.parseInt(edge[0]);
                 int to = Integer.parseInt(edge[1]);
-                graph.addEdge(nodes.get(from), nodes.get(to));
+                int weight = Integer.parseInt(edge[2]);
+                graph.addEdge(nodes.get(from), nodes.get(to), weight);
             } catch (NumberFormatException e) {
                 throw new ParseException("Edge must contain two numbers", i + nodesAmount + 1);
             }

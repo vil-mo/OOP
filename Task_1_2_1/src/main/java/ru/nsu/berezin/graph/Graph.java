@@ -1,6 +1,7 @@
 package ru.nsu.berezin.graph;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Collection of nodes connected by edges. Each node can store a data. Nodes and
@@ -52,18 +53,19 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
+     * @param weight Weight of nodes
      */
-    public void addEdge(NodeIndex from, NodeIndex to);
+    public void addEdge(NodeIndex from, NodeIndex to, int weight);
 
     /**
-     * Returns true if the graph contains an edge between two nodes.
+     * Get weight of the edge.
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if the graph already contained an edge between two nodes,
-     *     false otherwise.
+     * @return Weight if the graph contained an edge between two nodes empty
+     *     otherwise.
      */
-    public boolean hasEdge(NodeIndex from, NodeIndex to);
+    public Optional<Integer> getEdge(NodeIndex from, NodeIndex to);
 
     /**
      * Removes a single edge from the graph. Does nothing if edge does not
@@ -71,10 +73,10 @@ public interface Graph<T, NodeIndex> {
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return True if the graph did contain edge between two nodes before
-     *     removal, false otherwise.
+     * @return Weight if the graph contained an edge between two nodes empty
+     *     otherwise.
      */
-    public boolean removeEdge(NodeIndex from, NodeIndex to);
+    public Optional<Integer> removeEdge(NodeIndex from, NodeIndex to);
 
     /**
      * Neighbors of a node.
@@ -85,11 +87,12 @@ public interface Graph<T, NodeIndex> {
     public List<NodeIndex> neighbors(NodeIndex id);
 
     /**
-     * Returns this graph with enouth memory to hold amount nodes.
-     * No nodes have been inserted in the graph yet.
-     * It is safe to cast resulting type to the type of graph.
-     * 
-     * @param amount resulting graph has enough capasity to hold this many nodes.
+     * Returns this graph with enouth memory to hold amount nodes. No nodes have
+     * been inserted in the graph yet. It is safe to cast resulting type to the
+     * type of graph.
+     *
+     * @param amount resulting graph has enough capasity to hold this many
+     * nodes.
      */
     public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
         throw new UnsupportedOperationException();

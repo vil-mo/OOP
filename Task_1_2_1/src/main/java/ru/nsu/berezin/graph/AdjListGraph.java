@@ -4,11 +4,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class AdjListGraph<T> implements Graph<T, Integer> {
 
+    private class Edge {
+
+        final int node;
+        final int weight;
+
+        Edge(int node, int weight) {
+            this.node = node;
+            this.weight = weight;
+        }
+    }
+
     private final List<T> nodes = new ArrayList<>();
-    private final List<List<Integer>> edges = new ArrayList<>();
+    private final List<List<Edge>> edges = new ArrayList<>();
 
     @Override
     public Integer addNode(T node) {
@@ -81,23 +93,37 @@ public class AdjListGraph<T> implements Graph<T, Integer> {
     }
 
     @Override
-    public void addEdge(Integer from, Integer to) {
-        edges.get(from).add(to);
+    public void addEdge(Integer from, Integer to, int weight) {
+        edges.get(from).add(new Edge(to, weight));
     }
 
     @Override
-    public boolean hasEdge(Integer from, Integer to) {
-        return edges.get(from).contains(to);
+    public Optional<Integer> getEdge(Integer from, Integer to) {
+        for (Edge edge : edges.get(from)) {
+            if (edge.node == to) {
+                return Optional.of(edge.weight);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
-    public boolean removeEdge(Integer from, Integer to) {
-        return edges.get(from).remove(to);
+    public Optional<Integer> removeEdge(Integer from, Integer to) {
+        for (int i = 0; i < edges.get(from).size(); i++) {
+            if (edges.get(from).get(i).node == to) {
+                return Optional.of(edges.get(from).remove(i).weight);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override
     public List<Integer> neighbors(Integer id) {
-        return edges.get(id);
+        List<Integer> list = new ArrayList<>(edges.get(id).size());
+        for (Edge edge : edges.get(id)) {
+            list.add(edge.node);
+        }
+        return list;
     }
 
 }

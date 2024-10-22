@@ -3,10 +3,11 @@ package ru.nsu.berezin.graph;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
-    private final boolean[] edges;
+    private final Optional<Integer>[] edges;
     private final Object[] nodes;
 
     /**
@@ -15,7 +16,7 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
      * @param maxNodesAmount Maximum amount of nodes in the graph
      */
     public AdjMatrixGraph(int maxNodesAmount) {
-        edges = new boolean[maxNodesAmount * maxNodesAmount];
+        edges = new Optional[maxNodesAmount * maxNodesAmount];
         nodes = new Object[maxNodesAmount];
     }
 
@@ -46,11 +47,10 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
 
     @Override
     public T removeNode(Integer id) {
-        for (int i = 0; i < nodes.length; i++) {
-            edges[id * nodes.length + i] = false;
-            edges[i * nodes.length + id] = false;
+        for (int i = 0; i < nodes.length; i++) { 
+            edges[id * nodes.length + i] = Optional.empty();
+            edges[i * nodes.length + id] = Optional.empty();
         }
-
         T data = (T) nodes[id];
         nodes[id] = null;
         return data;
@@ -87,19 +87,19 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     }
 
     @Override
-    public void addEdge(Integer from, Integer to) {
-        edges[from * nodes.length + to] = true;
+    public void addEdge(Integer from, Integer to, int weight) {
+        edges[from * nodes.length + to] = Optional.of(weight);
     }
 
     @Override
-    public boolean hasEdge(Integer from, Integer to) {
+    public Optional<Integer> getEdge(Integer from, Integer to) {
         return edges[from * nodes.length + to];
     }
 
     @Override
-    public boolean removeEdge(Integer from, Integer to) {
-        boolean result = edges[from * nodes.length + to];
-        edges[from * nodes.length + to] = false;
+    public Optional<Integer> removeEdge(Integer from, Integer to) {
+        Optional<Integer> result = edges[from * nodes.length + to];
+        edges[from * nodes.length + to] = Optional.empty();
         return result;
     }
 
@@ -107,7 +107,7 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     public List<Integer> neighbors(Integer id) {
         List<Integer> result = new ArrayList();
         for (int i = 0; i < nodes.length; i++) {
-            if (edges[id * nodes.length + i]) {
+            if (edges[id * nodes.length + i].isPresent()) {
                 result.add(i);
             }
         }
