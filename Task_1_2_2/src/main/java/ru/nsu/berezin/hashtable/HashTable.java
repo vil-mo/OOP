@@ -1,5 +1,7 @@
 package ru.nsu.berezin.hashtable;
 
+import java.util.Optional;
+
 public class HashTable<K, V> {
 
     private final static int INITIAL_CAPACITY = 4;
@@ -8,6 +10,9 @@ public class HashTable<K, V> {
     private int size;
     private Bucket<K, V>[] buckets;
 
+    /**
+     * Creates an empty hash table.
+     */
     public HashTable() {
         buckets = new Bucket[0];
         size = 0;
@@ -26,9 +31,9 @@ public class HashTable<K, V> {
     }
 
     /**
-     * Finds fitting index for the given key in the given buckets array. *
+     * Finds fitting index for the given key in the given buckets array.
      * Indexed element will be either: null, key is null or key is equal to the
-     * key of the element.
+     * passed argument.
      */
     private int nextIndex(K key, Bucket<K, V>[] buckets) {
         int index = hash(key);
@@ -66,31 +71,82 @@ public class HashTable<K, V> {
         }
     }
 
-    public void put(K key, V value) {
+    /**
+     * Add an element to the table.
+     * If the element already exists, the old value is returned.
+     * 
+     * @param key Key of the element to add.
+     * @param value Value of the element to add.
+     * @return Optional containing the old value if the element already exists,
+     *     empty optional otherwise.
+     */
+    public Optional<V> put(K key, V value) {
         reallocate();
+        size++;
         int index = nextIndex(key);
         if (buckets[index] == null) {
             buckets[index] = new Bucket<>(key, value);
-        } else {
+            return Optional.empty();
+        } else if (buckets[index].key == null) {
             buckets[index].key = key;
             buckets[index].value = value;
+            return Optional.empty();
+        } else {
+            var oldValue = buckets[index].value;
+            buckets[index].value = value;
+            return Optional.of(oldValue);
         }
-        size++;
     }
 
-    public V get(K key) {
+    /**
+     * Get an element from the table.
+     * 
+     * @param key Key of the element to get.
+     * @return Optional containing the value of the element if it exists,
+     *     empty optional otherwise.
+     */
+    public Optional<V> get(K key) {
         int index = nextIndex(key);
         if (buckets[index] == null || buckets[index].key == null) {
-            return null;
+            return Optional.empty();
         }
-        return buckets[index].value;
+        return Optional.of(buckets[index].value);
     }
 
+    /**
+     * Remove an element from the table.
+     * 
+     * @param key Key of the element to remove.
+     * @return Optional containing the value of the element if it exists,
+     *     empty optional otherwise.
+     */
+    public Optional<V> remove(K key) {
+        int index = nextIndex(key);
+        if (buckets[index] == null || buckets[index].key == null) {
+            return Optional.empty();
+        }
+        buckets[index].key = null;
+        size--;
+        return Optional.of(buckets[index].value);
+    }
+
+
+    /**
+     * Check if the table contains the given key.
+     * 
+     * @param key Key to check.
+     * @return True if the table contains the key, false otherwise.
+     */
     public boolean contains(K key) {
         int index = nextIndex(key);
         return buckets[index] != null && buckets[index].key != null;
     }
 
+    /**
+     * Amount of unique keys in the table.
+     * 
+     * @return Amount of unique keys in the table.
+     */
     public int size() {
         return size;
     }
