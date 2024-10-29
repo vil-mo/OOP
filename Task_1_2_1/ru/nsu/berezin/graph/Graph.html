@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="AdjListGraph.html" title="class in ru.nsu.berezin.graph">AdjListGraph</a></code>, <code><a href="AdjMatrixGraph.html" title="class in ru.nsu.berezin.graph">AdjMatrixGraph</a></code></dd>
+<dd><code><a href="AdjListGraph.html" title="class in ru.nsu.berezin.graph">AdjListGraph</a></code>, <code><a href="AdjMatrixGraph.html" title="class in ru.nsu.berezin.graph">AdjMatrixGraph</a></code>, <code><a href="IncMatrixGraph.html" title="class in ru.nsu.berezin.graph">IncMatrixGraph</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">Graph&lt;T,<wbr>NodeIndex&gt;</span></div>
@@ -105,15 +105,16 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab2" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab2', 3)" class="table-tab">Instance Methods</button><button id="method-summary-table-tab3" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab3', 3)" class="table-tab">Abstract Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel" aria-labelledby="method-summary-table-tab0">
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(NodeIndex,NodeIndex)" class="member-name-link">addEdge</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
- <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#addEdge(NodeIndex,NodeIndex,int)" class="member-name-link">addEdge</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
+ <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to,
+ int&nbsp;weight)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Adds an edge between two nodes.</div>
 </div>
@@ -122,18 +123,18 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Adds a node to the graph.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Graph.html" title="type parameter in Graph">T</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getNode(NodeIndex)" class="member-name-link">getNode</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a><wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getEdges(NodeIndex,NodeIndex)" class="member-name-link">getEdges</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
+ <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Get weight of all edges between two nodes.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Graph.html" title="type parameter in Graph">T</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getNode(NodeIndex)" class="member-name-link">getNode</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Returns data of a node.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#hasEdge(NodeIndex,NodeIndex)" class="member-name-link">hasEdge</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
- <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Returns true if the graph contains an edge between two nodes.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a><wbr>&lt;<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#neighbors(NodeIndex)" class="member-name-link">neighbors</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Neighbors of a node.</div>
@@ -143,16 +144,23 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Iterates over all nodes in the graph.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeEdge(NodeIndex,NodeIndex)" class="member-name-link">removeEdge</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
- <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Graph.html" title="type parameter in Graph">T</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeNode(NodeIndex)" class="member-name-link">removeNode</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Removes a single edge from the graph.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="Graph.html" title="type parameter in Graph">T</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#removeNode(NodeIndex)" class="member-name-link">removeNode</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Removes a node from the graph.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1"><code>static &lt;Nt,<wbr>
+Nindex&gt;<br><a href="Graph.html" title="interface in ru.nsu.berezin.graph">Graph</a><wbr>&lt;Nt,<wbr>Nindex&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1"><code><a href="#reserveNodes(int)" class="member-name-link">reserveNodes</a><wbr>(int&nbsp;amount)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1">
+<div class="block">Returns this graph with enouth memory to hold amount nodes.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#retainEdges(NodeIndex,NodeIndex,java.util.function.Predicate)" class="member-name-link">retainEdges</a><wbr>(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
+ <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&nbsp;predicate)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Iterates over all edges between two nodes that satisfy the predicate.</div>
 </div>
 </div>
 </div>
@@ -226,61 +234,75 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="addEdge(NodeIndex,NodeIndex)">
-<h3 id="addEdge(java.lang.Object,java.lang.Object)">addEdge</h3>
+<section class="detail" id="addEdge(NodeIndex,NodeIndex,int)">
+<h3 id="addEdge(java.lang.Object,java.lang.Object,int)">addEdge</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">addEdge</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
- <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</span></div>
+ <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to,
+ int&nbsp;weight)</span></div>
 <div class="block">Adds an edge between two nodes.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>from</code> - Edge from this node</dd>
 <dd><code>to</code> - Edge to this node</dd>
+<dd><code>weight</code> - Weight of nodes</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="hasEdge(NodeIndex,NodeIndex)">
-<h3 id="hasEdge(java.lang.Object,java.lang.Object)">hasEdge</h3>
-<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">hasEdge</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
+<section class="detail" id="getEdges(NodeIndex,NodeIndex)">
+<h3 id="getEdges(java.lang.Object,java.lang.Object)">getEdges</h3>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</span>&nbsp;<span class="element-name">getEdges</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
  <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</span></div>
-<div class="block">Returns true if the graph contains an edge between two nodes.</div>
+<div class="block">Get weight of all edges between two nodes.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>from</code> - Edge from this node</dd>
 <dd><code>to</code> - Edge to this node</dd>
 <dt>Returns:</dt>
-<dd>True if the graph already contained an edge between two nodes,
-     false otherwise.</dd>
+<dd>Iterator over all weights of edges between two nodes</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="removeEdge(NodeIndex,NodeIndex)">
-<h3 id="removeEdge(java.lang.Object,java.lang.Object)">removeEdge</h3>
-<div class="member-signature"><span class="return-type">boolean</span>&nbsp;<span class="element-name">removeEdge</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
- <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to)</span></div>
-<div class="block">Removes a single edge from the graph. Does nothing if edge does not
- exist.</div>
+<section class="detail" id="retainEdges(NodeIndex,NodeIndex,java.util.function.Predicate)">
+<h3 id="retainEdges(java.lang.Object,java.lang.Object,java.util.function.Predicate)">retainEdges</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">retainEdges</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;from,
+ <a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;to,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Predicate.html" title="class or interface in java.util.function" class="external-link">Predicate</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;&nbsp;predicate)</span></div>
+<div class="block">Iterates over all edges between two nodes that satisfy the predicate.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>from</code> - Edge from this node</dd>
 <dd><code>to</code> - Edge to this node</dd>
-<dt>Returns:</dt>
-<dd>True if the graph did contain edge between two nodes before
-     removal, false otherwise.</dd>
+<dd><code>predicate</code> - Removes</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="neighbors(NodeIndex)">
 <h3 id="neighbors(java.lang.Object)">neighbors</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&gt;</span>&nbsp;<span class="element-name">neighbors</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</span></div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Iterable.html" title="class or interface in java.lang" class="external-link">Iterable</a>&lt;<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&gt;</span>&nbsp;<span class="element-name">neighbors</span><wbr><span class="parameters">(<a href="Graph.html" title="type parameter in Graph">NodeIndex</a>&nbsp;id)</span></div>
 <div class="block">Neighbors of a node.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>id</code> - Index of the node</dd>
 <dt>Returns:</dt>
 <dd>List of neighbors of the node</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="reserveNodes(int)">
+<h3>reserveNodes</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="type-parameters">&lt;Nt,<wbr>
+Nindex&gt;</span>&nbsp;<span class="return-type"><a href="Graph.html" title="interface in ru.nsu.berezin.graph">Graph</a>&lt;Nt,<wbr>Nindex&gt;</span>&nbsp;<span class="element-name">reserveNodes</span><wbr><span class="parameters">(int&nbsp;amount)</span></div>
+<div class="block">Returns this graph with enouth memory to hold amount nodes. No nodes have
+ been inserted in the graph yet. It is safe to cast resulting type to the
+ type of graph.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>amount</code> - resulting graph has enough capasity to hold this many
+     nodes.</dd>
 </dl>
 </section>
 </li>
