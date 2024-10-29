@@ -30,7 +30,6 @@ public class HashTable<K, V> {
      * Finds fitting index for the given key in the given buckets array. Indexed
      * element will be either: null, key is null or key is equal to the passed
      * argument.
-     *
      * Buckets should have non 0 lenght or throws exception.
      */
     private int nextIndex(K key) {
@@ -41,7 +40,6 @@ public class HashTable<K, V> {
      * Finds fitting index for the given key in the given buckets array. Indexed
      * element will be either: null, key is null or key is equal to the passed
      * argument.
-     *
      * Buckets should have non 0 lenght or throws exception.
      */
     private int nextIndex(K key, Bucket<K, V>[] buckets) {
@@ -87,7 +85,7 @@ public class HashTable<K, V> {
      * @param key Key of the element to add.
      * @param value Value of the element to add.
      * @return Optional containing the old value if the element already exists,
-     * empty optional otherwise.
+     *     empty optional otherwise.
      */
     public Optional<V> put(K key, V value) {
         reallocate();
@@ -113,7 +111,7 @@ public class HashTable<K, V> {
      *
      * @param key Key of the element to get.
      * @return Optional containing the value of the element if it exists, empty
-     * optional otherwise.
+     *     optional otherwise.
      */
     public Optional<V> get(K key) {
         if (size == 0) {
@@ -132,7 +130,7 @@ public class HashTable<K, V> {
      *
      * @param key Key of the element to remove.
      * @return Optional containing the value of the element if it exists, empty
-     * optional otherwise.
+     *     optional otherwise.
      */
     public Optional<V> remove(K key) {
         if (size == 0) {
