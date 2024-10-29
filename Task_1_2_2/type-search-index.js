@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.berezin.hashtable","l":"Bucket"},{"p":"ru.nsu.berezin.hashtable","l":"HashTable"}];updateSearchResults();
