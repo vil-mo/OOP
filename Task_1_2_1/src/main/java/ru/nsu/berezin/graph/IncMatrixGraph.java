@@ -6,23 +6,28 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
-public class AdjMatrixGraph<T> implements Graph<T, Integer> {
+/**
+ * A graph implementation based on an incident matrix.
+ *
+ * @param <V> Type of the vertices.
+ */
+public class IncMatrixGraph<V> implements Graph<V, Integer> {
 
-    private final List<Integer>[] edges;
     private final Object[] nodes;
+    private final List<Integer>[] edges;
 
     /**
-     * Creates a new matrix graph.
+     * Creates a new graph.
      *
      * @param maxNodesAmount Maximum amount of nodes in the graph
      */
-    public AdjMatrixGraph(int maxNodesAmount) {
-        edges = new ArrayList[maxNodesAmount * maxNodesAmount];
+    public IncMatrixGraph(int maxNodesAmount) {
         nodes = new Object[maxNodesAmount];
+        edges = new ArrayList[maxNodesAmount * maxNodesAmount];
     }
 
     @Override
-    public Integer addNode(T data) throws IllegalArgumentException, IllegalStateException {
+    public Integer addNode(V data) throws IllegalArgumentException, IllegalStateException {
         if (data == null) {
             throw new IllegalArgumentException("Data cannot be null");
         }
@@ -42,17 +47,17 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     }
 
     @Override
-    public T getNode(Integer id) {
-        return (T) nodes[id];
+    public V getNode(Integer id) {
+        return (V) nodes[id];
     }
 
     @Override
-    public T removeNode(Integer id) {
+    public V removeNode(Integer id) {
         for (int i = 0; i < nodes.length; i++) {
             edges[id * nodes.length + i].clear();
             edges[i * nodes.length + id].clear();
         }
-        T data = (T) nodes[id];
+        V data = (V) nodes[id];
         nodes[id] = null;
         return data;
     }
@@ -60,7 +65,7 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     @Override
     public Iterable<Integer> nodes() {
         return () -> {
-            return new Iterator<Integer>() {
+            var iterator = new Iterator<Integer>() {
                 int i = 0;
 
                 @Override
@@ -79,6 +84,7 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
                     return i;
                 }
             };
+            return iterator;
         };
     }
 
@@ -125,7 +131,6 @@ public class AdjMatrixGraph<T> implements Graph<T, Integer> {
     }
 
     public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
-        return new AdjMatrixGraph(amount);
+        return new IncMatrixGraph(amount);
     }
-
 }

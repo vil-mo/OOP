@@ -1,7 +1,6 @@
 package ru.nsu.berezin.graph;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
 
 /**
  * Collection of nodes connected by edges. Each node can store a data. Nodes and
@@ -58,25 +57,22 @@ public interface Graph<T, NodeIndex> {
     public void addEdge(NodeIndex from, NodeIndex to, int weight);
 
     /**
-     * Get weight of the edge.
+     * Get weight of all edges between two nodes.
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return Weight if the graph contained an edge between two nodes empty
-     *     otherwise.
+     * @return Iterator over all weights of edges between two nodes
      */
-    public Optional<Integer> getEdge(NodeIndex from, NodeIndex to);
+    public Iterable<Integer> getEdges(NodeIndex from, NodeIndex to);
 
     /**
-     * Removes a single edge from the graph. Does nothing if edge does not
-     * exist.
+     * Iterates over all edges between two nodes that satisfy the predicate.
      *
      * @param from Edge from this node
      * @param to Edge to this node
-     * @return Weight if the graph contained an edge between two nodes empty
-     *     otherwise.
+     * @param predicate Removes
      */
-    public Optional<Integer> removeEdge(NodeIndex from, NodeIndex to);
+    public void retainEdges(NodeIndex from, NodeIndex to, Predicate<Integer> predicate);
 
     /**
      * Neighbors of a node.
@@ -84,7 +80,7 @@ public interface Graph<T, NodeIndex> {
      * @param id Index of the node
      * @return List of neighbors of the node
      */
-    public List<NodeIndex> neighbors(NodeIndex id);
+    public Iterable<NodeIndex> neighbors(NodeIndex id);
 
     /**
      * Returns this graph with enouth memory to hold amount nodes. No nodes have
@@ -92,7 +88,7 @@ public interface Graph<T, NodeIndex> {
      * type of graph.
      *
      * @param amount resulting graph has enough capasity to hold this many
-     * nodes.
+     *     nodes.
      */
     public static <Nt, Nindex> Graph<Nt, Nindex> reserveNodes(int amount) {
         throw new UnsupportedOperationException();
