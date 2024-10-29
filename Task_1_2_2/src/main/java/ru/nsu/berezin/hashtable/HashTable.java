@@ -12,11 +12,11 @@ import java.util.Optional;
  */
 public class HashTable<K, V> {
 
-    private final static int INITIAL_CAPACITY = 4;
-    private final static double LOAD_FACTOR = 0.75;
-
     private int size;
     private Bucket<K, V>[] buckets;
+
+    private final static int INITIAL_CAPACITY = 4;
+    private final static double LOAD_FACTOR = 0.75;
 
     /**
      * Creates an empty hash table.
