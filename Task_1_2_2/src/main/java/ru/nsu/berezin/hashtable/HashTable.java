@@ -1,7 +1,5 @@
 package ru.nsu.berezin.hashtable;
 
-import java.util.*;
-
 /**
  * A hash table implementation.
  *
@@ -211,8 +209,12 @@ public class HashTable<K, V> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof HashTable<?, ?> genericHashTable)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof HashTable<?, ?> genericHashTable)) {
+            return false;
+        }
 
         if (this.size != genericHashTable.size) {
             return false;
