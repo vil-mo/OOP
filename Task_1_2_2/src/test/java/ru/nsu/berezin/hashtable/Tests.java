@@ -108,7 +108,8 @@ class Tests {
     void differentTypesEquals() {
         HashTable<String, Integer> table1 = new HashTable<>();
         HashTable<Integer, String> table2 = new HashTable<>();
-        table1.put("key", 1);
+        table1.put("key1", 1);
+        table2.put(1, "key1");
 
         assertFalse(table1.equals(table2));
     }

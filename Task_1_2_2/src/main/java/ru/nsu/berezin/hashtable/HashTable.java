@@ -1,9 +1,6 @@
 package ru.nsu.berezin.hashtable;
 
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * A hash table implementation.
@@ -177,17 +174,11 @@ public class HashTable<K, V> {
     private class HashTableIterator implements Iterator<Bucket<K, V>> {
 
         private int currentIndex = 0;
-        private final HashTable table;
-        private final int changeTick;
-
-        public HashTableIterator(HashTable table) {
-            this.table = table;
-            changeTick = table.changeTick;
-        }
+        private final int initialChangeTick = changeTick;
 
         @Override
         public boolean hasNext() {
-            if (table.changeTick != changeTick) {
+            if (initialChangeTick != changeTick) {
                 throw new ConcurrentModificationException();
             }
 
@@ -215,33 +206,23 @@ public class HashTable<K, V> {
      * @return An iterator over the elements in the table.
      */
     public Iterator<Bucket<K, V>> iterator() {
-        return new HashTableIterator(this);
+        return new HashTableIterator();
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == null) {
-            return false;
-        }
-        if (this == other) {
-            return true;
-        }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof HashTable<?, ?> genericHashTable)) return false;
 
-        HashTable<K, V> otherTable;
-
-        try {
-            otherTable = (HashTable<K, V>) other;
-        } catch (ClassCastException e) {
+        if (this.size != genericHashTable.size) {
             return false;
         }
 
-        if (this.size != otherTable.size) {
-            return false;
-        }
+        HashTable<K, V> hashTable = (HashTable<K, V>) o;
 
         for (Bucket<K, V> bucket : buckets) {
             if (bucket != null && bucket.key != null) {
-                Optional otherValue = otherTable.get(bucket.key);
+                Optional<V> otherValue = hashTable.get(bucket.key);
                 if (otherValue.isEmpty() || !otherValue.get().equals(bucket.value)) {
                     return false;
                 }
