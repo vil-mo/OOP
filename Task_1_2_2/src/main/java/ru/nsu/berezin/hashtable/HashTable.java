@@ -17,8 +17,8 @@ public class HashTable<K, V> {
     private Bucket<K, V>[] buckets;
     private int changeTick = 0;
 
-    private final static int INITIAL_CAPACITY = 4;
-    private final static double LOAD_FACTOR = 0.75;
+    private static final int INITIAL_CAPACITY = 4;
+    private static final double LOAD_FACTOR = 0.75;
 
     /**
      * Creates an empty hash table.

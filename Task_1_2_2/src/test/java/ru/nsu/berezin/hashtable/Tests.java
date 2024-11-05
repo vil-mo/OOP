@@ -1,13 +1,22 @@
 package ru.nsu.berezin.hashtable;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ConcurrentModificationException;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 class Tests {
+
     private HashTable<String, Integer> hashTable;
 
     @BeforeEach
@@ -103,9 +112,7 @@ class Tests {
         HashTable<Integer, String> table2 = new HashTable<>();
         table1.put("key", 1);
 
-        if (table1.equals(table2)) {
-            fail();
-        }
+        assertFalse(table1.equals(table2));
     }
 
     @Test
@@ -127,6 +134,9 @@ class Tests {
         assertTrue(iterator.hasNext());
         assertNotNull(iterator.next());
         assertFalse(iterator.hasNext());
+        iterator = hashTable.iterator();
+        hashTable.put("key3", 3);
+        assertThrows(ConcurrentModificationException.class, iterator::next);
     }
 
     @Test
@@ -160,5 +170,3 @@ class Tests {
         assertEquals(10, hashTable.size());
     }
 }
-
-
