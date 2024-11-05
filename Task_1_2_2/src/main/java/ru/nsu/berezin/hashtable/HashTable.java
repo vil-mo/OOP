@@ -1,5 +1,6 @@
 package ru.nsu.berezin.hashtable;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class HashTable<K, V> {
 
     private int size;
     private Bucket<K, V>[] buckets;
+    private int changeTick = 0;
 
     private final static int INITIAL_CAPACITY = 4;
     private final static double LOAD_FACTOR = 0.75;
@@ -43,7 +45,7 @@ public class HashTable<K, V> {
      * Buckets should have non 0 lenght or throws exception.
      */
     private int nextIndex(K key, Bucket<K, V>[] buckets) {
-        int index = key.hashCode() % buckets.length;
+        int index = Math.abs(key.hashCode()) % buckets.length;
         int remembered = -1;
         while (buckets[index] != null) {
             if (buckets[index].key == null) {
@@ -88,6 +90,7 @@ public class HashTable<K, V> {
      *     empty optional otherwise.
      */
     public Optional<V> put(K key, V value) {
+        changeTick += 1;
         reallocate();
         int index = nextIndex(key);
         if (buckets[index] == null) {
@@ -133,6 +136,7 @@ public class HashTable<K, V> {
      *     optional otherwise.
      */
     public Optional<V> remove(K key) {
+        changeTick += 1;
         if (size == 0) {
             return Optional.empty();
         }
@@ -173,9 +177,20 @@ public class HashTable<K, V> {
     private class HashTableIterator implements Iterator<Bucket<K, V>> {
 
         private int currentIndex = 0;
+        private final HashTable table;
+        private final int changeTick;
+
+        public HashTableIterator(HashTable table) {
+            this.table = table;
+            changeTick = table.changeTick;
+        }
 
         @Override
         public boolean hasNext() {
+            if (table.changeTick != changeTick) {
+                throw new ConcurrentModificationException();
+            }
+
             while (currentIndex < buckets.length) {
                 if (buckets[currentIndex] != null && buckets[currentIndex].key != null) {
                     return true;
@@ -200,7 +215,7 @@ public class HashTable<K, V> {
      * @return An iterator over the elements in the table.
      */
     public Iterator<Bucket<K, V>> iterator() {
-        return new HashTableIterator();
+        return new HashTableIterator(this);
     }
 
     @Override
