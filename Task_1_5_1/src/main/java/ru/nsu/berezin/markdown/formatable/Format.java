@@ -1,11 +1,9 @@
-package ru.nsu.berezin.markdown;
-
-import ru.nsu.berezin.markdown.formatable.Formatable;
+package ru.nsu.berezin.markdown.formatable;
 
 /**
  * A format of a span. 
  */
-public class Format extends Element {
+public class Format {
     private final Formatable formatable;
     private final boolean italic = false;
     private final boolean bold = false;
@@ -15,7 +13,7 @@ public class Format extends Element {
     /**
      * Creates a span without formatting.
      *
-     * @param span span
+     * @param formatable inner formatable
      */
     public Format(Formatable formatable) {
         this.formatable = formatable;
@@ -43,7 +41,6 @@ public class Format extends Element {
         return builder.toString();
     }
 
-    @Override
     public String serialized() {
         StringBuilder builder = new StringBuilder();
         String formatModifiers = formatModifiers();
@@ -51,7 +48,8 @@ public class Format extends Element {
         builder.append(formatModifiers);
         builder.append(formatable.serialized());
         builder.append(new StringBuilder(formatModifiers).reverse().toString());
-        
+        builder.append("\n");
+
         return builder.toString();
     }
 }

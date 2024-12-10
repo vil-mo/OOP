@@ -2,33 +2,30 @@ package ru.nsu.berezin.markdown;
 
 import ru.nsu.berezin.markdown.formatable.Format;
 
+
 /**
- * A markdown list.
- * Each element of the list is separated by a new line and indented by four spaces.
- * The begining of the element is indicated by a dash followed by a space.
+ * A paragraph.
+ * Each element of the paragraph is separated by a new line.
  */
-public class List extends Element {
-    java.util.List<Format> elements;
+public class Paragraph extends Element {
+    private final java.util.List<Format> elements;
 
     /**
-     * Creates a list with specified elements.
+     * Creates a paragraph with the given elements.
      *
      * @param elements elements
      */
-    public List(Format... elements) {
+    public Paragraph(Format... elements) {
         this.elements = java.util.Arrays.asList(elements);
     }
 
     @Override
     public String serialized() {
         StringBuilder builder = new StringBuilder();
-
         for (Format element : elements) {
-            builder.append("- ");
             builder.append(element.serialized());
-            builder.append("\n");
         }
-
+        builder.append("\n");
         return builder.toString();
     }
 }
