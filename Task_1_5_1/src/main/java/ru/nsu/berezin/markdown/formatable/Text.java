@@ -1,40 +1,24 @@
 package ru.nsu.berezin.markdown.formatable;
 
-import java.util.List;
-
 /**
- * A span of unformatted text.
- * When serialized, the text will be transformed to remove occurrences of specail symbols ({@link #transformSpecialSymbols()}).
+ * A string of text. When serialized, puts `\` before any special character in
+ * the text. For example, if the text is `*text*`, the transformed text will be
+ * `\*text\*`. This is done to avoid problems with markdown parsers. Raw text
+ * should not contain special characters.
  */
-public class Text implements Formatable {
-    public static List<Character> specialCharacters = java.util.Arrays.asList('*', '\\');
+public class Text extends RawText {
 
-    private final String text;
-    
     /**
-     * Creates a span containing the given text.
-     *
+     * Creates a string containing the given text.
+     * 
      * @param text text
      */
     public Text(String text) {
-        this.text = text;
+        super(text);
     }
 
-    /**
-     * Puts `\` before any special character in the text.
-     * For example, if the text is `*text*`, the transformed text will be `\*text\*`.
-     * This is done to avoid problems with markdown parsers. Raw text should not contain special characters.
-     */
     @Override
     public String serialized() {
-        StringBuilder builder = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            if (c == '*' || c =='\\') {
-                builder.append('\\');
-            }
-            builder.append(c);
-        }
-
-        return builder.toString();
+        return withoutSpecialCharactes();
     }
 }
