@@ -7,7 +7,7 @@ import java.util.List;
  */
 public abstract class RawText implements Formatable {
 
-    private final static List<Character> specialCharacters = java.util.Arrays.asList('*', '\\');
+    private final static List<Character> specialCharacters = java.util.Arrays.asList('*', '\\', '`', '_', '~', '[', ']');
 
     protected final String text;
 
@@ -18,11 +18,10 @@ public abstract class RawText implements Formatable {
     /**
      * Puts `\` before any special character in the text. For example, if the
      * text is `*text*`, the transformed text will be `\*text\*`. This is done
-     * to avoid problems with markdown parsers. Raw text should not contain
+     * to avoid problems with markdown parser. Raw text should not contain
      * special characters.
-     * 
      * Shouldn't be used directly, but rather by the subclasses. Use
-     * {@link #serialized()} instead.
+     * serialized instead.
      */
     public String withoutSpecialCharactes() {
         StringBuilder builder = new StringBuilder();

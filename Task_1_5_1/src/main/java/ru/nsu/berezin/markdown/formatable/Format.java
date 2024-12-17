@@ -1,9 +1,11 @@
 package ru.nsu.berezin.markdown.formatable;
 
+import ru.nsu.berezin.markdown.Serialized;
+
 /**
  * A format of a span. 
  */
-public class Format {
+public class Format implements Serialized {
     private final Formatable formatable;
     private final boolean italic = false;
     private final boolean bold = false;
@@ -41,15 +43,13 @@ public class Format {
         return builder.toString();
     }
 
-    public String serialized() {
-        StringBuilder builder = new StringBuilder();
+    @Override
+    public void serialized(StringBuilder builder) {
         String formatModifiers = formatModifiers();
 
         builder.append(formatModifiers);
-        builder.append(formatable.serialized());
-        builder.append(new StringBuilder(formatModifiers).reverse().toString());
+        formatable.serialized(builder);
+        builder.append(new StringBuilder(formatModifiers).reverse());
         builder.append("\n");
-
-        return builder.toString();
     }
 }

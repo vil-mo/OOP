@@ -20,12 +20,10 @@ public class Paragraph extends Element {
     }
 
     @Override
-    public String serialized() {
-        StringBuilder builder = new StringBuilder();
+    public void serialized(StringBuilder builder) {
         for (Format element : elements) {
-            builder.append(element.serialized());
+            element.serialized(builder);
         }
         builder.append("\n");
-        return builder.toString();
     }
 }

@@ -14,7 +14,9 @@ public class Code extends RawText {
     }
 
     @Override
-    public String serialized() {
-        return "`" + text + "`";
+    public void serialized(StringBuilder builder) {
+        builder.append('`');
+        builder.append(text);
+        builder.append('`');
     }
 }

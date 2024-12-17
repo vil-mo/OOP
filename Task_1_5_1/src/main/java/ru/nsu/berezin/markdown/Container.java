@@ -26,11 +26,9 @@ public class Container extends Element {
     }
 
     @Override
-    public String serialized() {
-        StringBuilder builder = new StringBuilder();
+    public void serialized(StringBuilder builder) {
         for (Element element : elements) {
-            builder.append(element.serialized());
+            element.serialized(builder);
         }
-        return builder.toString();
     }
 }

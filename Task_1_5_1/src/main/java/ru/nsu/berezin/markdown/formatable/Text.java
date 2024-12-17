@@ -18,7 +18,7 @@ public class Text extends RawText {
     }
 
     @Override
-    public String serialized() {
-        return withoutSpecialCharactes();
+    public void serialized(StringBuilder builder) {
+        builder.append(withoutSpecialCharactes());
     }
 }

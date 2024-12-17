@@ -19,14 +19,10 @@ public class Header extends Element {
     }
 
     @Override
-    public String serialized() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < level; i++) {
-            builder.append("#");
-        }
+    public void serialized(StringBuilder builder) {
+        builder.append("#".repeat(Math.max(1, level)));
         builder.append(" ");
         builder.append(text.serialized());
         builder.append("\n");
-        return builder.toString();
     }
 }

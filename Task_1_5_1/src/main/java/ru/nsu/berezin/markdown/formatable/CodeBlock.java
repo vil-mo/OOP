@@ -52,11 +52,17 @@ public class CodeBlock extends RawText {
     }
 
     @Override
-    public String serialized() {
+    public void serialized(StringBuilder builder) {
         if (language.isEmpty()) {
-            return "```" + text + "```";
+            builder.append("```");
+            builder.append(text);
+            builder.append("```");
         } else {
-            return "```" + language.get().identifier() + "\n" + text + "```";
+            builder.append("```");
+            builder.append(language.get().identifier());
+            builder.append('\n');
+            builder.append(text);
+            builder.append("```");
         }
     }
 }
