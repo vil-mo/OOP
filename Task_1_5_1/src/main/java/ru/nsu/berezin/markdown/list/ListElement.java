@@ -33,20 +33,16 @@ public class ListElement {
         this.subList = Optional.of(subList);
     }
 
-    public String serialized(int nesting) {
-        StringBuilder builder = new StringBuilder();
-
+    public void serialized(int nesting, StringBuilder builder) {
         for (int i = 0; i < nesting; i++) {
             builder.append("    ");
         }
         builder.append("- ");
-        builder.append(paragraph.serialized());
+        paragraph.serialized(builder);
         builder.append("\n");
 
         if (subList.isPresent()) {
-            builder.append(subList.get().serialized(nesting + 1));
+            subList.get().serialized(nesting + 1, builder);
         }
-
-        return builder.toString();
     }
 }

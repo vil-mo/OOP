@@ -22,7 +22,7 @@ public class Header extends Element {
     public void serialized(StringBuilder builder) {
         builder.append("#".repeat(Math.max(1, level)));
         builder.append(" ");
-        builder.append(text.serialized());
+        text.serialized(builder);
         builder.append("\n");
     }
 }

@@ -19,18 +19,14 @@ public class List extends Element {
         this.elements = java.util.Arrays.asList(elements);
     }
 
-    String serialized(int nesting) {
-        StringBuilder builder = new StringBuilder();
-
+    void serialized(int nesting, StringBuilder builder) {
         for (ListElement element : elements) {
-            builder.append(element.serialized(nesting));
+            element.serialized(nesting, builder);
         }
-
-        return builder.toString();
     }
 
     @Override
-    public String serialized() {
-        return serialized(0);
+    public void serialized(StringBuilder builder) {
+        serialized(0, builder);
     }
 }
