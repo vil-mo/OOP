@@ -11,4 +11,11 @@ import ru.nsu.berezin.markdown.Serialized;
  * other {@link Formatable}s.
  */
 public interface Formatable extends Serialized {
+    /**
+     * Returns the length of the text that will be appended to the builder when calling serialized.
+     *
+     * @return length in characters
+     */
+    int length();
+
 }

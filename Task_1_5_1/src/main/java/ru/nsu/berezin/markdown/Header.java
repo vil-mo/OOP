@@ -23,6 +23,5 @@ public class Header extends Element {
         builder.append("#".repeat(Math.max(1, level)));
         builder.append(" ");
         text.serialized(builder);
-        builder.append("\n");
     }
 }

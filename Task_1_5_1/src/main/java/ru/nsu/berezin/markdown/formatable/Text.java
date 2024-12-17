@@ -18,7 +18,12 @@ public class Text extends RawText {
     }
 
     @Override
+    public int length() {
+        return withoutSpecialCharacters().length();
+    }
+
+    @Override
     public void serialized(StringBuilder builder) {
-        builder.append(withoutSpecialCharactes());
+        builder.append(withoutSpecialCharacters());
     }
 }

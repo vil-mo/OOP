@@ -1,7 +1,7 @@
 package ru.nsu.berezin.markdown;
 
 /**
- * An piece of data that can be serialized to a string.
+ * A piece of data that can be serialized to a string.
  */
 public interface Serialized {
     /**

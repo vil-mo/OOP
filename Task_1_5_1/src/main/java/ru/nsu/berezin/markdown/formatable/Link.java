@@ -18,6 +18,11 @@ public class Link extends RawText {
     }
 
     @Override
+    public int length() {
+        return text.length() + address.length() + 4;
+    }
+
+    @Override
     public void serialized(StringBuilder builder) {
         builder.append("[");
         builder.append(text);

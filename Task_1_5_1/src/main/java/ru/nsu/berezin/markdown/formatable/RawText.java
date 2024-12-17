@@ -23,13 +23,17 @@ public abstract class RawText implements Formatable {
      * Shouldn't be used directly, but rather by the subclasses. Use
      * serialized instead.
      */
-    public String withoutSpecialCharactes() {
+    public String withoutSpecialCharacters() {
         StringBuilder builder = new StringBuilder();
         for (char c : text.toCharArray()) {
             if (specialCharacters.contains(c)) {
                 builder.append('\\');
             }
-            builder.append(c);
+            if (c == '\n') {
+                builder.append("<br>");
+            } else {
+                builder.append(c);
+            }
         }
 
         return builder.toString();

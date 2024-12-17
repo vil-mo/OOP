@@ -44,6 +44,11 @@ public class Format implements Serialized {
     }
 
     @Override
+    public int length() {
+        return formatModifiers().length() * 2 + formatable.length();
+    }
+
+    @Override
     public void serialized(StringBuilder builder) {
         String formatModifiers = formatModifiers();
 
