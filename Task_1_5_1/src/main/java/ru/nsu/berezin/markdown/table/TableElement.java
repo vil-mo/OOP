@@ -1,20 +1,22 @@
 package ru.nsu.berezin.markdown.table;
 
 import ru.nsu.berezin.markdown.Paragraph;
-import ru.nsu.berezin.markdown.Serialized;
 
 class TableElement {
-    final Paragraph paragraph;
-    final Table.Alignment alignment;
+    private final Paragraph paragraph;
+    private final Table.Alignment alignment;
 
-    public TableElement(Paragraph paragraph, Table.Alignment alignment) {
+    TableElement(Paragraph paragraph, Table.Alignment alignment) {
         this.paragraph = paragraph;
         this.alignment = alignment;
     }
 
+    public int length() {
+        return paragraph.lenght();
+    }
+
     public void serialized(int width, StringBuilder builder) {
-        int paragraphLength = paragraph.lenght();
-        int padding = width - paragraphLength;
+        int padding = width - length();
 
         if (alignment == Table.Alignment.LEFT) {
             paragraph.serialized(builder);

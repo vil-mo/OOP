@@ -18,10 +18,15 @@ public class Table extends Element {
     private final List<TableElement[]> rows;
     private final int[] columnWidths;
 
-    private Table(List<TableElement[]> rows, int[] columnWidths) {
+    Table(List<TableElement[]> rows, int[] columnWidths) {
         this.rows = rows;
         this.columnWidths = columnWidths;
     }
+
+    public TableBuilder builder(int columnCount) {
+        return new TableBuilder(columnCount);
+    }
+
 
     @Override
     public void serialized(StringBuilder builder) {
