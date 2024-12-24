@@ -43,10 +43,6 @@ public class Format implements Serialized {
         return builder.toString();
     }
 
-    public int length() {
-        return formatModifiers().length() * 2 + formatable.length();
-    }
-
     @Override
     public void serialized(StringBuilder builder) {
         String formatModifiers = formatModifiers();

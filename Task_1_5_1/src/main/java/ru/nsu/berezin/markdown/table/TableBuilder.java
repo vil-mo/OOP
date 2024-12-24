@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class TableBuilder {
     private final int columnCount;
-    private final List<TableElement[]> rows;
-    private Table.Alignment[] currentAlignments;
-    private final int[] columnWidths;
+    private final List<Paragraph[]> rows;
+    private Table.Alignment[] alignments;
 
     TableBuilder(int columnCount) {
         this.columnCount = columnCount;
         this.rows = new java.util.ArrayList<>();
-        this.columnWidths = new int[columnCount];
+        alignments = new Table.Alignment[columnCount];
+        Arrays.fill(alignments, Table.Alignment.LEFT);
     }
 
     /**
@@ -26,36 +26,37 @@ public class TableBuilder {
      * @return resulting table
      */
     public Table build() {
-        return new Table(rows, columnWidths);
+        return new Table(rows, alignments);
     }
 
-    public TableBuilder withAlignments(Table.Alignment... alignment) {
+    /**
+     * Sets the alignments of the table.
+     *
+     * @param alignment alignments
+     * @return this builder
+     * @throws IllegalArgumentException if the number of alignments is incorrect
+     */
+    public TableBuilder withAlignments(Table.Alignment... alignment) throws IllegalArgumentException {
         if (alignment.length != columnCount) {
             throw new IllegalArgumentException("Incorrect number of alignments. Should be " + columnCount);
         }
-        this.currentAlignments = alignment;
+        this.alignments = alignment;
         return this;
     }
+
     /**
      * Add a row of paragraphs to the table.
      *
      * @param elements paragraphs of the row
      * @return this builder
+     * @throws IllegalArgumentException if the number of elements is incorrect
      */
-    public TableBuilder addRow(Paragraph... elements) {
+    public TableBuilder addRow(Paragraph... elements) throws IllegalArgumentException {
         if (elements.length != columnCount) {
             throw new IllegalArgumentException("Incorrect number of elements. Should be " + columnCount);
         }
 
-        TableElement[] row = new TableElement[columnCount];
-        for (int i = 0; i < columnCount; i++) {
-            row[i] = new TableElement(elements[i], currentAlignments[i]);
-
-            int width = row[i].length();
-            if (columnWidths[i] < width) {
-                columnWidths[i] = width;
-            }
-        }
+        rows.add(elements);
 
         return this;
     }

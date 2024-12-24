@@ -3,24 +3,43 @@ package ru.nsu.berezin.markdown.list;
 import ru.nsu.berezin.markdown.Element;
 
 /**
- * A markdown list.
- * Each element of the list is separated by a new line.
- * The begining of the element is indicated by a dash followed by a space.
+ * A markdown list. Each element of the list is separated by a new line. The
+ * begining of the element is indicated by a dash followed by a space.
  */
 public class List extends Element {
+
+    public enum ListType {
+        Unordered,
+        Ordered,
+    }
+
     private final java.util.List<ListElement> elements;
+    private final ListType type;
 
     /**
      * Creates a list with specified elements.
      *
      * @param elements elements
      */
-    public List(ListElement... elements) {
-        this.elements = java.util.Arrays.asList(elements);
+    List(java.util.List<ListElement> elements, ListType type) {
+        this.elements = elements;
+        this.type = type;
     }
 
     void serialized(int nesting, StringBuilder builder) {
-        for (ListElement element : elements) {
+        for (int i = 0; i < elements.size(); i++) {
+            ListElement element = elements.get(i);
+            for (int nest = 0; nest < nesting; nest++) {
+                builder.append("    ");
+            }
+            switch (type) {
+                case Unordered:
+                    builder.append("* ");
+                case Ordered:
+                    builder.append(i + 1);
+                    builder.append(". ");
+            }
+
             element.serialized(nesting, builder);
         }
     }

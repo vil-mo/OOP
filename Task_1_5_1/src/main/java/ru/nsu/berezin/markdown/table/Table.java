@@ -1,47 +1,72 @@
 package ru.nsu.berezin.markdown.table;
 
+import java.util.List;
 import ru.nsu.berezin.markdown.Element;
 import ru.nsu.berezin.markdown.Paragraph;
 
-import java.util.List;
-
 /**
- * A table.
+ * A table. Formatted with pipes.
  */
 public class Table extends Element {
+
     public enum Alignment {
-        LEFT,
-        RIGHT,
-        CENTER,
+        LEFT(":--"),
+        RIGHT("--:"),
+        CENTER(":-:");
+
+        private final String serialized;
+
+        Alignment(String serialized) {
+            this.serialized = serialized;
+        }
     }
 
-    private final List<TableElement[]> rows;
-    private final int[] columnWidths;
+    private final List<Paragraph[]> rows;
+    private final Alignment[] alignments;
 
-    Table(List<TableElement[]> rows, int[] columnWidths) {
+    Table(List<Paragraph[]> rows, Alignment[] alignments) {
         this.rows = rows;
-        this.columnWidths = columnWidths;
+        this.alignments = alignments;
     }
 
     public TableBuilder builder(int columnCount) {
         return new TableBuilder(columnCount);
     }
 
-
     @Override
     public void serialized(StringBuilder builder) {
-        for (TableElement[] row : rows) {
+        boolean printedAlign = false;
+
+        for (Paragraph[] row : rows) {
             boolean first = true;
-            for (int i = 0; i < row.length; i++) {
-                TableElement element = row[i];
+            for (Paragraph paragraph : row) {
                 if (first) {
                     first = false;
                     builder.append("| ");
+                } else {
+                    builder.append(" | ");
                 }
-                element.serialized(columnWidths[i], builder);
-                builder.append(" | ");
+
+                paragraph.serialized(builder);
             }
             builder.append(" |\n");
+
+            if (!printedAlign) {
+                printedAlign = true;
+                first = false;
+                for (Alignment alignment : alignments) {
+                    if (first) {
+                        first = false;
+                        builder.append("| ");
+                    } else {
+                        builder.append(" | ");
+                    }
+
+                    builder.append(alignment.serialized);
+
+                }
+                builder.append(" |\n");
+            }
         }
     }
 }

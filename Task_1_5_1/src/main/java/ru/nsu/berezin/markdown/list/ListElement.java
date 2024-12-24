@@ -34,10 +34,6 @@ public class ListElement {
     }
 
     public void serialized(int nesting, StringBuilder builder) {
-        for (int i = 0; i < nesting; i++) {
-            builder.append("    ");
-        }
-        builder.append("- ");
         paragraph.serialized(builder);
         builder.append("\n");
 

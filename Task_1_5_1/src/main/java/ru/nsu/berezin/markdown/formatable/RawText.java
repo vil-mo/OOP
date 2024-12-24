@@ -19,19 +19,19 @@ public abstract class RawText implements Formatable {
      * Puts `\` before any special character in the text. For example, if the
      * text is `*text*`, the transformed text will be `\*text\*`. This is done
      * to avoid problems with markdown parser. Raw text should not contain
-     * special characters.
-     * Shouldn't be used directly, but rather by the subclasses. Use
-     * serialized instead.
+     * special characters. Shouldn't be used directly, but rather by the
+     * subclasses. Use serialized instead.
      */
     public String withoutSpecialCharacters() {
         StringBuilder builder = new StringBuilder();
         for (char c : text.toCharArray()) {
-            if (specialCharacters.contains(c)) {
-                builder.append('\\');
-            }
             if (c == '\n') {
                 builder.append("<br>");
             } else {
+                if (specialCharacters.contains(c)) {
+                    builder.append('\\');
+                }
+
                 builder.append(c);
             }
         }

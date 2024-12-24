@@ -52,11 +52,6 @@ public class CodeBlock extends RawText {
     }
 
     @Override
-    public int length() {
-        return text.length() + language.map(Language::identifier).map(String::length).orElse(0) + 6;
-    }
-
-    @Override
     public void serialized(StringBuilder builder) {
         if (language.isEmpty()) {
             builder.append("```");

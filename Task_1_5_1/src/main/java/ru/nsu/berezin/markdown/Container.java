@@ -29,7 +29,7 @@ public class Container extends Element {
     public void serialized(StringBuilder builder) {
         for (Element element : elements) {
             element.serialized(builder);
-            builder.append('\n');
+            builder.append("\n\n");
         }
     }
 }
