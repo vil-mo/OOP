@@ -3,7 +3,11 @@ package ru.nsu.berezin.markdown;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import org.junit.jupiter.api.Test;
+
+import ru.nsu.berezin.markdown.formatable.Code;
+import ru.nsu.berezin.markdown.formatable.CodeBlock;
 import ru.nsu.berezin.markdown.formatable.Format;
 import ru.nsu.berezin.markdown.formatable.Image;
 import ru.nsu.berezin.markdown.formatable.Link;
@@ -31,6 +35,14 @@ class WriteMarkdown {
             new Format(new Text("spans!")).bold())
         );
 
+        container.add(
+            new Paragraph(new Format(new Code("Haoeu")))
+        );
+
+        container.add(
+            new Paragraph(new Format(new CodeBlock("Haoeu\naseotuhsn")))
+        );
+
         container.add(List.builder()
             .addRow(new Paragraph("List item 1"))
             .addRow(new Paragraph("List item 2"))
@@ -49,11 +61,13 @@ class WriteMarkdown {
             new Format(new Link("address", "https://markdownlivepreview.com/"))
         ));
 
+        container.add(new Blockquotes(1, new Paragraph("Blockquote")));
+
         container.add(
             Table.builder(3)
                 .withAlignments(Alignment.CENTER, Alignment.RIGHT, Alignment.LEFT)
                 .addRow(new Paragraph("Header 1"), new Paragraph("Header 2"), new Paragraph("Header 3"))
-                .addRow(new Paragraph("Cell 1"), new Paragraph("Cell 2"), new Paragraph("Cell 3"))
+                .addRow(new Paragraph("Cell 1"), new Paragraph(new Format(new Image("/image/sample.webp", new Text("Sample image")))), new Paragraph("Cell 3"))
                 .addRow(new Paragraph("Cell 4"), new Paragraph("Cell 5"), new Paragraph("Cell 6"))
                 .build()
         );

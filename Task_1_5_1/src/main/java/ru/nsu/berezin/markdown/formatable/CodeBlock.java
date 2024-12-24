@@ -57,15 +57,15 @@ public class CodeBlock extends RawText {
     @Override
     public void serialized(StringBuilder builder) {
         if (language.isEmpty()) {
-            builder.append("```");
+            builder.append("```\n");
             builder.append(text);
-            builder.append("```");
+            builder.append("\n```");
         } else {
             builder.append("```");
             builder.append(language.get().identifier());
             builder.append('\n');
             builder.append(text);
-            builder.append("```");
+            builder.append("\n```");
         }
     }
 }
