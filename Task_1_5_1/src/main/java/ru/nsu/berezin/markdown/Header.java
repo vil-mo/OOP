@@ -1,11 +1,8 @@
 package ru.nsu.berezin.markdown;
 
-import ru.nsu.berezin.markdown.formatable.Format;
-
-
 public class Header extends Element {
     private final int level;
-    private final Format text;
+    private final Paragraph text;
 
     /**
      * Creates a header with the given level and text.
@@ -13,7 +10,7 @@ public class Header extends Element {
      * @param level  level
      * @param text   text
      */
-    public Header(int level, Format text) {
+    public Header(int level, Paragraph text) {
         this.level = level;
         this.text = text;
     }

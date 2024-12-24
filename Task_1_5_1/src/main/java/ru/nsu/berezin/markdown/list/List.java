@@ -26,7 +26,10 @@ public class List extends Element {
         this.type = type;
     }
 
-    public ListBuilder builder() {
+    /**
+     * A builder for lists.
+     */
+    public static ListBuilder builder() {
         return new ListBuilder();
     }
 
@@ -39,9 +42,11 @@ public class List extends Element {
             switch (type) {
                 case Unordered:
                     builder.append("* ");
+                    break;
                 case Ordered:
                     builder.append(i + 1);
                     builder.append(". ");
+                    break;
             }
 
             element.serialized(nesting, builder);

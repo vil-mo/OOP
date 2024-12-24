@@ -21,17 +21,6 @@ public class ListElement {
         this.subList = Optional.empty();
     }
 
-    /**
-     * Creates a list element with a sublist.
-     *
-     * @param paragraph A content of the element
-     * @param subList A sublist
-     */
-    ListElement(Paragraph paragraph, List subList) {
-        this.paragraph = paragraph;
-        this.subList = Optional.of(subList);
-    }
-
     boolean hasSubList() {
         return subList.isPresent();
     }

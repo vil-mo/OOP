@@ -25,6 +25,15 @@ public class Container extends Element {
         this.elements.addAll(Arrays.asList(elements));
     }
 
+    /**
+     * Adds an element to the container.
+     *
+     * @param element element
+     */
+    public void add(Element element) {
+        this.elements.add(element);
+    }
+
     @Override
     public void serialized(StringBuilder builder) {
         for (Element element : elements) {

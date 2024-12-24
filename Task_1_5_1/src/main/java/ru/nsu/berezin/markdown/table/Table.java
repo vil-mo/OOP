@@ -29,7 +29,13 @@ public class Table extends Element {
         this.alignments = alignments;
     }
 
-    public TableBuilder builder(int columnCount) {
+    /**
+     * A builder for tables.
+     * 
+     * @param columnCount number of columns
+     * @return builder
+     */
+    public static TableBuilder builder(int columnCount) {
         return new TableBuilder(columnCount);
     }
 

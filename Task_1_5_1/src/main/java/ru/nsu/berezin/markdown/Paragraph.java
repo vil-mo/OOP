@@ -1,7 +1,8 @@
 package ru.nsu.berezin.markdown;
 
 import ru.nsu.berezin.markdown.formatable.Format;
-
+import ru.nsu.berezin.markdown.formatable.Formatable;
+import ru.nsu.berezin.markdown.formatable.Text;
 
 /**
  * A paragraph.
@@ -17,6 +18,24 @@ public class Paragraph extends Element {
      */
     public Paragraph(Format... elements) {
         this.elements = java.util.Arrays.asList(elements);
+    }
+
+    /**
+     * Creates a paragraph with unformatted formatable type.
+     *
+     * @param text formattable type
+     */
+    public Paragraph(Formatable text) {
+        this(new Format(text));
+    }
+
+    /**
+     * Creates a paragraph with the given text.
+     *
+     * @param text text
+     */
+    public Paragraph(String text) {
+        this(new Format(new Text(text)));
     }
 
     @Override

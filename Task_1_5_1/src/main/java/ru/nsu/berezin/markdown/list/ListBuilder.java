@@ -9,7 +9,7 @@ import ru.nsu.berezin.markdown.Paragraph;
 public class ListBuilder {
     private final java.util.List<ListElement> rows;
     private List.ListType type;
-    private Optional<ListBuilder> sub;
+    private Optional<ListBuilder> sub = Optional.empty();
 
     ListBuilder() {
         this.rows = new java.util.ArrayList<>();
@@ -22,6 +22,9 @@ public class ListBuilder {
      * @return resulting list
      */
     public List build() {
+        if (sub.isPresent()) {
+            innerEndSubList();
+        }
         return new List(rows, type);
     }
 
@@ -91,10 +94,10 @@ public class ListBuilder {
     void innerEndSubList() {
         if (sub.isPresent()) {
             sub.get().innerEndSubList();
+            ListBuilder subBuilder = sub.get();
+            List list = subBuilder.build();
+            rows.getLast().setSubList(list);
+            sub = Optional.empty();
         }
-        ListBuilder subBuilder = sub.get();
-        List list = subBuilder.build();
-        rows.getLast().setSubList(list);
-        sub = Optional.empty();
     }
 }

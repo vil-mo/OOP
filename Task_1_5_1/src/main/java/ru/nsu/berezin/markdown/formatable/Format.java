@@ -7,10 +7,10 @@ import ru.nsu.berezin.markdown.Serialized;
  */
 public class Format implements Serialized {
     private final Formatable formatable;
-    private final boolean italic = false;
-    private final boolean bold = false;
-    private final boolean underline = false;
-    private final boolean strikethrough = false;
+    private boolean italic = false;
+    private boolean bold = false;
+    private boolean underline = false;
+    private boolean strikethrough = false;
 
     /**
      * Creates a span without formatting.
@@ -19,6 +19,46 @@ public class Format implements Serialized {
      */
     public Format(Formatable formatable) {
         this.formatable = formatable;
+    }
+
+    /**
+     * Makes the span italic.
+     *
+     * @return this span
+     */
+    public Format italic() {
+        this.italic = true;
+        return this;
+    }
+
+    /**
+     * Makes the span bold.
+     *
+     * @return this span
+     */
+    public Format bold() {
+        this.bold = true;
+        return this;
+    }
+
+    /**
+     * Makes the span underlined.
+     *
+     * @return this span
+     */
+    public Format underline() {
+        this.underline = true;
+        return this;
+    }
+
+    /**
+     * Makes the span strikethrough.
+     *
+     * @return this span
+     */
+    public Format strikethrough() {
+        this.strikethrough = true;
+        return this;
     }
 
     /**
@@ -50,6 +90,5 @@ public class Format implements Serialized {
         builder.append(formatModifiers);
         formatable.serialized(builder);
         builder.append(new StringBuilder(formatModifiers).reverse());
-        builder.append("\n");
     }
 }
