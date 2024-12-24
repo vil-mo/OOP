@@ -7,7 +7,7 @@ public class Link extends RawText {
     private final String address;
 
     /**
-     * Create a link
+     * Create a link.
      *
      * @param text text
      * @param address address

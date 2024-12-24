@@ -6,6 +6,9 @@ import java.util.Optional;
  * A block of code. Formatted with three single backticks and optional language identifier.
  */
 public class CodeBlock extends RawText {
+    /**
+     * A code block language.
+     */
     public enum Language {
         C("c"),
         CPP("cpp"),

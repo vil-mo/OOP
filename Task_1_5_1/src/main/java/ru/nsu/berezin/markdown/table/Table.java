@@ -9,6 +9,9 @@ import ru.nsu.berezin.markdown.Paragraph;
  */
 public class Table extends Element {
 
+    /**
+     * An alignment of a table cell.
+     */
     public enum Alignment {
         LEFT(":--"),
         RIGHT("--:"),

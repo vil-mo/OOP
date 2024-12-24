@@ -7,7 +7,7 @@ import java.util.List;
  */
 public abstract class RawText implements Formatable {
 
-    private final static List<Character> specialCharacters = java.util.Arrays.asList('*', '\\', '`', '_', '~', '[', ']');
+    private static final List<Character> specialCharacters = java.util.Arrays.asList('*', '\\', '`', '_', '~', '[', ']');
 
     protected final String text;
 

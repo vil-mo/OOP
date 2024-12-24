@@ -62,7 +62,6 @@ public class ListBuilder {
     /**
      * Add a sublist to the list.
      *
-     * @param sub sub list
      * @return this builder
      */
     public ListBuilder addSubList() {

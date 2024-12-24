@@ -3,9 +3,7 @@ package ru.nsu.berezin.markdown;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import org.junit.jupiter.api.Test;
-
 import ru.nsu.berezin.markdown.formatable.Format;
 import ru.nsu.berezin.markdown.formatable.Image;
 import ru.nsu.berezin.markdown.formatable.Link;
@@ -58,7 +56,7 @@ class WriteMarkdown {
                 .addRow(new Paragraph("Cell 1"), new Paragraph("Cell 2"), new Paragraph("Cell 3"))
                 .addRow(new Paragraph("Cell 4"), new Paragraph("Cell 5"), new Paragraph("Cell 6"))
                 .build()
-            );
+        );
 
         return container;
     }

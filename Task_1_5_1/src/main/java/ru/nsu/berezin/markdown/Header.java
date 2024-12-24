@@ -1,5 +1,8 @@
 package ru.nsu.berezin.markdown;
 
+/**
+ * A header. Each element of the header is separated by a new line.
+ */
 public class Header extends Element {
     private final int level;
     private final Paragraph text;

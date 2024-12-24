@@ -29,7 +29,7 @@ public class ListElement {
         this.subList = Optional.of(subList);
     }
 
-    public void serialized(int nesting, StringBuilder builder) {
+    void serialized(int nesting, StringBuilder builder) {
         paragraph.serialized(builder);
         builder.append("\n");
 
