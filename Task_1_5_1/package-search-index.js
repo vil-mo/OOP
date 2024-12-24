@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.berezin.markdown"},{"l":"ru.nsu.berezin.markdown.formatable"},{"l":"ru.nsu.berezin.markdown.list"},{"l":"ru.nsu.berezin.markdown.table"}];updateSearchResults();
