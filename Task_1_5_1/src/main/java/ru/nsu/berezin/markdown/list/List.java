@@ -26,6 +26,10 @@ public class List extends Element {
         this.type = type;
     }
 
+    public ListBuilder builder() {
+        return new ListBuilder();
+    }
+
     void serialized(int nesting, StringBuilder builder) {
         for (int i = 0; i < elements.size(); i++) {
             ListElement element = elements.get(i);

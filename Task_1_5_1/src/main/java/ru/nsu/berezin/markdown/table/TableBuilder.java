@@ -1,9 +1,8 @@
 package ru.nsu.berezin.markdown.table;
 
-import ru.nsu.berezin.markdown.Paragraph;
-
 import java.util.Arrays;
 import java.util.List;
+import ru.nsu.berezin.markdown.Paragraph;
 
 /**
  * A builder for creating tables.

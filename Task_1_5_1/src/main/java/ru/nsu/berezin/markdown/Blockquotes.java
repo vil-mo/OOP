@@ -17,7 +17,7 @@ public class Blockquotes extends Element {
 
     @Override
     public void serialized(StringBuilder builder) {
-        builder.append("#".repeat(Math.max(1, level)));
+        builder.append(">".repeat(Math.max(1, level)));
         builder.append(" ");
         text.serialized(builder);
     }

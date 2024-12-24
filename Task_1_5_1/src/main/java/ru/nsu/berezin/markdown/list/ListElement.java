@@ -1,7 +1,6 @@
 package ru.nsu.berezin.markdown.list;
 
 import java.util.Optional;
-
 import ru.nsu.berezin.markdown.Paragraph;
 
 /**
@@ -10,14 +9,14 @@ import ru.nsu.berezin.markdown.Paragraph;
 public class ListElement {
 
     private final Paragraph paragraph;
-    private final Optional<List> subList;
+    private Optional<List> subList;
 
     /**
      * Creates a list element with a paragraph.
      *
      * @param paragraph A content of the element
      */
-    public ListElement(Paragraph paragraph) {
+    ListElement(Paragraph paragraph) {
         this.paragraph = paragraph;
         this.subList = Optional.empty();
     }
@@ -28,8 +27,16 @@ public class ListElement {
      * @param paragraph A content of the element
      * @param subList A sublist
      */
-    public ListElement(Paragraph paragraph, List subList) {
+    ListElement(Paragraph paragraph, List subList) {
         this.paragraph = paragraph;
+        this.subList = Optional.of(subList);
+    }
+
+    boolean hasSubList() {
+        return subList.isPresent();
+    }
+
+    void setSubList(List subList) {
         this.subList = Optional.of(subList);
     }
 
