@@ -3,10 +3,12 @@ package ru.nsu.berezin.primes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
+/**
+ * Benches for AllPrimes class
+ */
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
@@ -17,6 +19,9 @@ public class PrimesBenchmark {
 
     List<Integer> primes = new ArrayList<>();
 
+    /**
+     * Sets up the benchmark by creating a list of primes
+     */
     @Setup
     public void setup() {
         for (int i = 0; i < 10000000; i++) {
