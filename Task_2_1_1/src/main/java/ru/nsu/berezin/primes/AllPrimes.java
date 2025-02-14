@@ -1,11 +1,12 @@
 package ru.nsu.berezin.primes;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AllPrimes {
 
-    private static boolean isPrime(int n) {
+    public static boolean isPrime(int n) {
         int iterations = (int) Math.ceil(Math.sqrt((double) n));
 
         for (int i = 2; i < iterations; i++) {
@@ -26,7 +27,7 @@ public class AllPrimes {
         return true;
     }
 
-    public static boolean threads(int[] array, int threadAmount) throws InterruptedException {
+    public static boolean threads(List<Integer> array, int threadAmount) throws InterruptedException {
         Thread[] threads = new Thread[threadAmount];
         AtomicBoolean isPrime = new AtomicBoolean(true);
 
@@ -34,8 +35,8 @@ public class AllPrimes {
             final int index = i;
 
             threads[i] = new Thread(() -> {
-                for (int j = index; j < array.length; j += threadAmount) {
-                    int x = array[j];
+                for (int j = index; j < array.size(); j += threadAmount) {
+                    int x = array.get(j);
                     if (!isPrime(x)) {
                         isPrime.set(false);
                         return;

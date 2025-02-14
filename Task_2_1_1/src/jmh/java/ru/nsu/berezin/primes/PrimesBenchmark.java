@@ -1,7 +1,7 @@
 package ru.nsu.berezin.primes;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.*;
@@ -15,22 +15,49 @@ import org.openjdk.jmh.infra.Blackhole;
 @Fork(1)
 public class PrimesBenchmark {
 
-    static int smallArray[] = {2, 3, 5, 7, 11, 13, 4};
+    List<Integer> primes = new ArrayList<>();
 
-    @Benchmark
-    public static void smallSequential(Blackhole blackhole) {
-        Iterable<Integer> array = () -> Arrays.stream(smallArray).boxed().iterator();
-        blackhole.consume(AllPrimes.sequential(array));
+    @Setup
+    public void setup() {
+        for (int i = 0; i < 10000000; i++) {
+            if (AllPrimes.isPrime(i)) {
+                primes.add(i);
+            }
+        }
     }
 
     @Benchmark
-    public static void smallThread(Blackhole blackhole) throws InterruptedException {
-        blackhole.consume(AllPrimes.threads(smallArray, 4));
+    public void sequential(Blackhole blackhole) {
+        blackhole.consume(AllPrimes.sequential(primes));
     }
 
     @Benchmark
-    public static void smallParallelStream(Blackhole blackhole) {
-        Collection<Integer> array = Arrays.stream(smallArray).boxed().toList();
-        blackhole.consume(AllPrimes.parallelStream(array));
+    public void thread1(Blackhole blackhole) throws InterruptedException {
+        blackhole.consume(AllPrimes.threads(primes, 1));
+    }
+
+    @Benchmark
+    public void thread2(Blackhole blackhole) throws InterruptedException {
+        blackhole.consume(AllPrimes.threads(primes, 2));
+    }
+
+    @Benchmark
+    public void thread3(Blackhole blackhole) throws InterruptedException {
+        blackhole.consume(AllPrimes.threads(primes, 3));
+    }
+
+    @Benchmark
+    public void thread4(Blackhole blackhole) throws InterruptedException {
+        blackhole.consume(AllPrimes.threads(primes, 4));
+    }
+
+    @Benchmark
+    public void thread100(Blackhole blackhole) throws InterruptedException {
+        blackhole.consume(AllPrimes.threads(primes, 100));
+    }
+
+    @Benchmark
+    public void parallelStream(Blackhole blackhole) {
+        blackhole.consume(AllPrimes.parallelStream(primes));
     }
 }
