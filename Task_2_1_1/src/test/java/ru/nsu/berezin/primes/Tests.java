@@ -1,6 +1,4 @@
-package ru.nsu.berezin;
-
-import static org.junit.jupiter.api.Assertions.*;
+package ru.nsu.berezin.primes;
 
 import org.junit.jupiter.api.Test;
 

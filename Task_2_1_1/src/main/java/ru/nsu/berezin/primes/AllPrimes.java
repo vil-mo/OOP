@@ -16,7 +16,7 @@ public class AllPrimes {
         return true;
     }
 
-    public static boolean singleThread(Iterable<Integer> array) {
+    public static boolean sequential(Iterable<Integer> array) {
         for (int x : array) {
             if (!isPrime(x)) {
                 return false;
