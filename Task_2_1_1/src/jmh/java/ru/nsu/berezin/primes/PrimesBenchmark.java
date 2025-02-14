@@ -7,7 +7,7 @@ import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
 /**
- * Benches for AllPrimes class
+ * Benches for AllPrimes class.
  */
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
@@ -20,7 +20,7 @@ public class PrimesBenchmark {
     List<Integer> primes = new ArrayList<>();
 
     /**
-     * Sets up the benchmark by creating a list of primes
+     * Sets up the benchmark by creating a list of primes.
      */
     @Setup
     public void setup() {
