@@ -1,0 +1,8 @@
+Benchmark                       Mode  Cnt      Score      Error  Units
+PrimesBenchmark.parallelStream  avgt   20   4460.184 ±  275.068  ms/op
+PrimesBenchmark.sequential      avgt   20   9556.059 ± 1362.086  ms/op
+PrimesBenchmark.thread1         avgt   20  10358.097 ± 1353.462  ms/op
+PrimesBenchmark.thread100       avgt   20   4166.515 ±   22.818  ms/op
+PrimesBenchmark.thread2         avgt   20   6233.189 ±   72.421  ms/op
+PrimesBenchmark.thread3         avgt   20   4825.117 ±  334.780  ms/op
+PrimesBenchmark.thread4         avgt   20   4281.923 ±   44.974  ms/op
